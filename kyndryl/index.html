@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="description" content="Aditi Behera: root-cause analysis, data preparation and data storytelling, mapped to Kyndryl's Data Operations Associate role.">
+<title>Aditi Behera Root Cause</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: an analyst's case file. One reading column; evidence tables and the method strip run wide. */
+:root{
+  --paper:#f6f5f2; --sheet:#ffffff; --ink:#17191c; --ink-2:#4b4f56; --ink-3:#7a7f87;
+  --rule:#e2dfd9; --accent:#d93a24; --accent-soft:#fdebe7; --hl:#ffd2c7; --band:#1d1f23; --band-ink:#fff; --band-ink-2:#c9ccd2;
+  --ok:#1f8a5b; --gap:#a26a00;
+  --display:"Archivo",ui-sans-serif,system-ui,sans-serif;
+  --serif:"Source Serif 4",Georgia,serif;
+  --mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --paper:#111214; --sheet:#1a1c1f; --ink:#eef0f2; --ink-2:#c3c7cd; --ink-3:#8d939b;
+  --rule:#2c2f34; --accent:#ff6a52; --accent-soft:#3a1f1a; --hl:#6e2a1f; --band:#0b0c0e; --band-ink:#fff; --band-ink-2:#b8bcc3;
+  --ok:#4cc38a; --gap:#e0a83a; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --paper:#111214; --sheet:#1a1c1f; --ink:#eef0f2; --ink-2:#c3c7cd; --ink-3:#8d939b;
+  --rule:#2c2f34; --accent:#ff6a52; --accent-soft:#3a1f1a; --hl:#6e2a1f; --band:#0b0c0e; --band-ink:#fff; --band-ink-2:#b8bcc3;
+  --ok:#4cc38a; --gap:#e0a83a; color-scheme:dark}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--serif);font-size:18px;line-height:1.6}
+.wrap{max-width:1040px;margin:0 auto;padding:28px 16px 72px}
+.col{max-width:68ch}
+h1,h2,h3{font-family:var(--display);margin:0;line-height:1.1;letter-spacing:-.01em;text-wrap:balance}
+h1{font-size:clamp(2.2rem,6vw,4rem);font-weight:800}
+h2{font-size:clamp(1.5rem,3.2vw,2.1rem);font-weight:800}
+h3{font-size:1.12rem;font-weight:700}
+p{margin:0}
+a{color:var(--accent)}
+.label{font-family:var(--mono);font-size:.74rem;letter-spacing:.09em;text-transform:uppercase;color:var(--ink-3)}
+mark{background:linear-gradient(transparent 14%,var(--hl) 14%,var(--hl) 86%,transparent 86%);color:inherit;padding:0 .1em;font-weight:600}
+section{display:grid;gap:20px;padding-block:44px;border-top:1px solid var(--rule)}
+.muted{color:var(--ink-2)}
+.hero{display:grid;gap:22px;padding:clamp(22px,4vw,44px);background:var(--band);color:var(--band-ink);border-radius:16px;border-bottom:5px solid var(--accent);margin-bottom:8px}
+.hero .dek{font-size:1.18rem;max-width:62ch;color:var(--band-ink-2)}
+.hero .hl{color:var(--accent)}
+.memo{display:grid;grid-template-columns:auto 1fr;gap:4px 16px;font-family:var(--mono);font-size:.8rem;color:var(--band-ink-2);border-left:3px solid var(--accent);padding-left:14px}
+.memo b{color:var(--accent);font-weight:500;text-transform:uppercase;letter-spacing:.06em}
+.contact{display:flex;flex-wrap:wrap;gap:8px 18px;font-family:var(--mono);font-size:.84rem;color:var(--band-ink-2)}
+.contact a{color:var(--band-ink)}
+.pill{font-family:var(--display);font-weight:700;font-size:.9rem;text-decoration:none;background:var(--accent);color:#fff;border-radius:999px;padding:7px 15px;justify-self:start}
+.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+@media (max-width:760px){.stats{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.stat{background:var(--sheet);border:1px solid var(--rule);border-radius:12px;padding:16px;display:grid;gap:4px;align-content:start}
+.stat b{font-family:var(--display);font-size:clamp(1.6rem,4vw,2.2rem);font-weight:800;color:var(--accent);line-height:1}
+.stat span{font-size:.92rem;color:var(--ink-2);line-height:1.4}
+.flow{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:0;counter-reset:s}
+@media (max-width:820px){.flow{grid-template-columns:1fr}}
+.step{padding:14px 16px;border-top:3px solid var(--accent);display:grid;gap:6px;align-content:start;background:var(--sheet);border-right:1px solid var(--rule)}
+.step:last-child{border-right:0}
+@media (max-width:820px){.step{border-right:0;border-bottom:1px solid var(--rule)}}
+.step h3::before{counter-increment:s;content:counter(s) " ";color:var(--accent)}
+.step p{font-size:.94rem;color:var(--ink-2)}
+.cases{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+@media (max-width:780px){.cases{grid-template-columns:1fr}}
+.case{background:var(--sheet);border:1px solid var(--rule);border-radius:12px;padding:20px;display:grid;gap:12px;align-content:start;min-width:0}
+.case .where{font-family:var(--mono);font-size:.76rem;color:var(--ink-3)}
+.star{display:grid;grid-template-columns:1.3rem 1fr;gap:6px 10px;margin:0;font-size:.96rem}
+.star dt{font-family:var(--display);font-weight:800;color:var(--accent)}
+.star dd{margin:0;color:var(--ink-2)}
+.star dd.res{color:var(--ink)}
+.tbl{width:100%;border-collapse:collapse;font-size:.95rem;min-width:620px}
+.tbl th,.tbl td{text-align:left;vertical-align:top;padding:10px 12px;border-bottom:1px solid var(--rule)}
+.tbl thead th{font-family:var(--mono);font-size:.72rem;font-weight:500;text-transform:uppercase;letter-spacing:.06em;color:var(--ink-3)}
+.tbl td:first-child{font-family:var(--display);font-weight:600;width:30%}
+.scroll{overflow-x:auto;background:var(--sheet);border:1px solid var(--rule);border-radius:12px}
+.st{font-family:var(--mono);font-size:.72rem;border-radius:4px;padding:2px 7px;white-space:nowrap}
+.st.ok{color:var(--ok);border:1px solid var(--ok)}
+.st.gap{color:var(--gap);border:1px solid var(--gap)}
+.ask{background:var(--sheet);border:1px solid var(--rule);border-radius:12px;padding:20px;display:grid;gap:10px}
+.ask ol{margin:0;padding-left:20px;display:grid;gap:6px;color:var(--ink-2)}
+.tools{display:flex;flex-wrap:wrap;gap:8px}
+.tools span{font-family:var(--mono);font-size:.8rem;border:1px solid var(--rule);background:var(--sheet);border-radius:5px;padding:3px 8px}
+footer{border-top:4px solid var(--accent);padding-top:22px;display:grid;gap:8px;font-family:var(--mono);font-size:.8rem;color:var(--ink-3)}
+</style></head>
+<body><div class="wrap">
+
+<header class="hero">
+  <div class="memo">
+    <b>For</b><span>Kyndryl, Early Careers Consult Program</span>
+    <b>Role</b><span>Data Operations Associate, R-69022, Frisco TX</span>
+    <b>From</b><span>Aditi Behera, MS Business Analytics, Penn State (Aug 2026)</span>
+  </div>
+  <h1>I look for the <span class="hl">root cause</span>, then tell the story so the client can act.</h1>
+  <p class="dek">Kyndryl's Data Operations Associates dig into large IT datasets, find the causes of defects and variation, and turn them into insights customers use. This page shows where I've done that already, with the measured results.</p>
+  <a class="pill" href="https://kyndryl.wd5.myworkdayjobs.com/en-US/KyndrylEarlyCareers/job/Dallas-USDALFRI-Frisco-AI-HUB/Early-Careers-Consult-Program---Data-Operations-Associate_R-69022-2">View the role</a>
+  <div class="contact">
+    <a href="mailto:aditi.behera@outlook.com">aditi.behera@outlook.com</a>
+    <span>+1 (814) 699 3926</span>
+    <a href="https://www.linkedin.com/in/aditi-behera-27bab8237">LinkedIn</a>
+    <a href="https://github.com/aditibehera">GitHub</a>
+  </div>
+</header>
+
+<section aria-labelledby="r">
+  <p class="label" id="r">Measured results</p>
+  <div class="stats">
+    <div class="stat"><b>14.6%</b><span>faster approval cycle after finding a batch bottleneck in a 7-layer workflow</span></div>
+    <div class="stat"><b>35%</b><span>less manual reconciliation effort from automated exception-flagging</span></div>
+    <div class="stat"><b>~$250K</b><span>estimated annual savings from that automation</span></div>
+    <div class="stat"><b>~$500K</b><span>risk exposure surfaced in Power BI dashboards reviewed in daily CEO meetings</span></div>
+  </div>
+</section>
+
+<section aria-labelledby="m">
+  <div class="col"><p class="label">How I work</p><h2 id="m">The same five steps the role describes</h2></div>
+  <div class="flow">
+    <div class="step"><h3>Scope</h3><p>Pin down the business question and what success looks like. At Expenzing I wrote BRDs, FRDs and user stories for 15+ client implementations.</p></div>
+    <div class="step"><h3>Gather &amp; clean</h3><p>Pull data from more than one source and get it into a consistent shape before analysis: 500K+ bike-share trip records, spend data from 50+ client accounts.</p></div>
+    <div class="step"><h3>Find the cause</h3><p>Trace variation back to where it starts. The 14.6% cycle-time cut came from isolating one 10-item batch step, not from a broad fix.</p></div>
+    <div class="step"><h3>Visualize</h3><p>Build views people use: Excel and Power BI dashboards for daily CEO reviews, Tableau maps of station-level demand gaps.</p></div>
+    <div class="step"><h3>Tell the story</h3><p>Explain the finding to technical and non-technical audiences. As a Penn State TA I led weekly discussions for 60+ students.</p></div>
+  </div>
+</section>
+
+<section aria-labelledby="c">
+  <div class="col"><p class="label">Case file</p><h2 id="c">Four examples, each with a measured result</h2></div>
+  <div class="cases">
+    <article class="case">
+      <p class="where">Expenzing · Business Analyst &amp; Product Executive · 2025</p>
+      <h3>A slow approval chain with one hidden bottleneck</h3>
+      <dl class="star">
+        <dt>S</dt><dd>Invoice approvals across a 7-layer workflow were taking longer than clients expected.</dd>
+        <dt>T</dt><dd>Find where time was being lost and fix it without redesigning the whole process.</dd>
+        <dt>A</dt><dd>Mapped each approval layer, measured processing hours per transaction, isolated a 10-item batch step, and delivered the fix with IT within days of escalation.</dd>
+        <dt>R</dt><dd class="res">Average cycle time dropped <mark>14.6%</mark>.</dd>
+      </dl>
+    </article>
+    <article class="case">
+      <p class="where">Expenzing · 2025</p>
+      <h3>Catching mismatches automatically instead of by hand</h3>
+      <dl class="star">
+        <dt>S</dt><dd>Three-way matching exceptions (PO vs. receipt vs. invoice) were reviewed manually each week.</dd>
+        <dt>T</dt><dd>Reduce the manual load without missing real discrepancies.</dd>
+        <dt>A</dt><dd>Implemented automated exception-flagging rules inside the matching workflow so only true variances reached a reviewer.</dd>
+        <dt>R</dt><dd class="res"><mark>35%</mark> less reconciliation effort, an estimated <mark>~$250K</mark> a year saved.</dd>
+      </dl>
+    </article>
+    <article class="case">
+      <p class="where">Expenzing · 2025</p>
+      <h3>Dashboards leadership opened every morning</h3>
+      <dl class="star">
+        <dt>S</dt><dd>Leadership had no single view of approval times and spend concentration across clients.</dd>
+        <dt>T</dt><dd>Give the CEO's daily meeting a view that showed where risk was building.</dd>
+        <dt>A</dt><dd>Structured approval, spend and dependency data from 50+ accounts (8–10 clients, 6 countries) into Excel and Power BI dashboards.</dd>
+        <dt>R</dt><dd class="res">Adopted in daily CEO meetings; surfaced <mark>~$500K</mark> in risk exposure.</dd>
+      </dl>
+    </article>
+    <article class="case">
+      <p class="where">Penn State · Academic project</p>
+      <h3>Chicago Bike Share: where demand and supply don't line up</h3>
+      <dl class="star">
+        <dt>S</dt><dd>A city bike-share network with 600+ stations and uneven demand.</dd>
+        <dt>T</dt><dd>Find operational inefficiencies in station rebalancing.</dd>
+        <dt>A</dt><dd>Queried and prepared 500K+ trip records in SQL, then mapped demand and rebalancing gaps in Tableau.</dd>
+        <dt>R</dt><dd class="res">Identified <mark>12</mark> operational inefficiencies.</dd>
+      </dl>
+    </article>
+  </div>
+  <p class="muted col">Also on <a href="https://github.com/aditibehera">GitHub</a>: an NLP Invoice Exception Classifier that sorts 1,440 synthetic AP exceptions into 7 types, comparing models with 5-fold cross-validation on TF-IDF features.</p>
+</section>
+
+<section aria-labelledby="f">
+  <div class="col"><p class="label">Fit check</p><h2 id="f">The posting, line by line</h2><p class="muted">Where I have evidence, and where I don't yet.</p></div>
+  <div class="scroll"><table class="tbl">
+    <thead><tr><th>Kyndryl asks for</th><th>Evidence</th><th>Status</th></tr></thead>
+    <tbody>
+      <tr><td>Problem-solving and critical thinking</td><td>Root-caused a 7-layer approval delay to one batch step; 14.6% faster cycle.</td><td><span class="st ok">Shown</span></td></tr>
+      <tr><td>Explaining data to technical and non-technical audiences</td><td>Dashboards used in daily CEO meetings; UAT sessions with client stakeholders; TA for 60+ students.</td><td><span class="st ok">Shown</span></td></tr>
+      <tr><td>Managing multiple projects with attention to detail</td><td>15+ simultaneous enterprise implementations delivered on schedule, 20% fewer scope changes.</td><td><span class="st ok">Shown</span></td></tr>
+      <tr><td>Quantitative degree</td><td>MS Business Analytics (Penn State, 3.76 GPA); B.Tech Computer Science.</td><td><span class="st ok">Shown</span></td></tr>
+      <tr><td>Power BI, Python, R, SQL</td><td>Power BI dashboards at Expenzing; SQL on 500K+ records; Python NLP pipeline; R in coursework.</td><td><span class="st ok">Shown</span></td></tr>
+      <tr><td>Looker, QuickSight, BigQuery, Azure Synapse</td><td>Not used yet. The underlying skills (SQL, BI modeling) transfer.</td><td><span class="st gap">Not yet</span></td></tr>
+      <tr><td>Six Sigma or cloud data certification</td><td>None yet. The Consult Program's certification track is part of why I'm applying.</td><td><span class="st gap">Not yet</span></td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<section aria-labelledby="q">
+  <div class="col"><p class="label">First 30 days</p><h2 id="q">Questions I'd bring to the team</h2></div>
+  <div class="ask">
+    <ol>
+      <li>Which customer datasets come up most often (incident, change, asset, monitoring), and where does cleaning take the longest?</li>
+      <li>How does the team define a "defect" or "variation" for a typical engagement, and who signs off on that definition?</li>
+      <li>Which BI tool do customers expect to see results in, and is there a standard deliverable template?</li>
+      <li>What does a strong first-year Associate deliver by month six?</li>
+    </ol>
+  </div>
+</section>
+
+<section aria-labelledby="s">
+  <p class="label" id="s">Tools</p>
+  <div class="tools">
+    <span>SQL</span><span>Python (Pandas, Scikit-learn)</span><span>R</span><span>Power BI (DAX)</span><span>Tableau</span><span>Excel (Pivot Tables, VLOOKUP, VBA)</span><span>Jira</span><span>Agile/Scrum</span><span>SAP</span><span>Oracle ERP</span><span>Claude · ChatGPT · Copilot</span>
+  </div>
+</section>
+
+<footer>
+  <span>Aditi Behera · aditi.behera@outlook.com · +1 (814) 699 3926</span>
+  <span>Personal portfolio prepared for one application. Not affiliated with or endorsed by Kyndryl. Figures are from my own work; Expenzing figures are estimates measured as stated.</span>
+</footer>
+</div></body></html>
