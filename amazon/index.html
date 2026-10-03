@@ -1,0 +1,367 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="description" content="Aditi Behera: STAR stories mapped to Amazon Leadership Principles, measured results, and working tenets.">
+<title>Aditi Behera Working Backwards</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@500;700;800&family=Literata:opsz,wght@7..72,400;7..72,500;7..72,600&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: a written narrative, like a printed memo a reviewer marks up: one reading column, evidence set wide, key numbers highlighted. */
+:root{
+  --paper:#f7f8fa; --sheet:#ffffff; --ink:#131a22; --ink-2:#47505c; --ink-3:#77808c;
+  --rule:#e1e4e8; --cobalt:#c45500; --cobalt-soft:#fff1de; --hl:#ffd99a; --hl-ink:#131a22;
+  --orange:#ff9900; --link:#007185; --band:#232f3e; --band-2:#37475a; --band-ink:#ffffff; --band-ink-2:#c7ced8;
+  --before:#2a78d6; --after:#eb6834; --grid:#eceef2;
+  --display:"Schibsted Grotesk",ui-sans-serif,system-ui,sans-serif;
+  --serif:"Literata",Georgia,"Times New Roman",serif;
+  --mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --paper:#0f141a; --sheet:#171e26; --ink:#eef1f5; --ink-2:#c1c8d1; --ink-3:#8c96a3;
+  --rule:#2a333e; --cobalt:#ffac3d; --cobalt-soft:#33240f; --hl:#6b4600; --hl-ink:#fff4e0;
+  --orange:#ff9900; --link:#4cc3d9; --band:#0a0f15; --band-2:#25313f; --band-ink:#ffffff; --band-ink-2:#b9c2cd;
+  --before:#3987e5; --after:#d95926; --grid:#232b35; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --paper:#0f141a; --sheet:#171e26; --ink:#eef1f5; --ink-2:#c1c8d1; --ink-3:#8c96a3;
+  --rule:#2a333e; --cobalt:#ffac3d; --cobalt-soft:#33240f; --hl:#6b4600; --hl-ink:#fff4e0;
+  --orange:#ff9900; --link:#4cc3d9; --band:#0a0f15; --band-2:#25313f; --band-ink:#ffffff; --band-ink-2:#b9c2cd;
+  --before:#3987e5; --after:#d95926; --grid:#232b35; color-scheme:dark}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--serif);font-size:18px;line-height:1.62}
+.wrap{max-width:1080px;margin:0 auto;padding-inline:20px;padding-block:28px 72px}
+.col{max-width:68ch}
+h1,h2,h3{font-family:var(--display);margin:0;text-wrap:balance;line-height:1.08;letter-spacing:-.015em}
+h1{font-size:clamp(2.4rem,6.6vw,4.6rem);font-weight:800}
+h2{font-size:clamp(1.55rem,3.4vw,2.2rem);font-weight:800}
+h3{font-size:1.18rem;font-weight:700}
+p{margin:0}
+a{color:var(--link)}
+:focus-visible{outline:2px solid var(--orange);outline-offset:3px;border-radius:4px}
+.label{font-family:var(--mono);font-size:.74rem;letter-spacing:.09em;text-transform:uppercase;color:var(--ink-3)}
+mark{background:linear-gradient(transparent 12%,var(--hl) 12%,var(--hl) 88%,transparent 88%);color:var(--hl-ink);padding:0 .12em;font-weight:600}
+section{display:grid;gap:20px;padding-block:48px;border-top:1px solid var(--rule)}
+.muted{color:var(--ink-2)}
+.note{font-family:var(--mono);font-size:.78rem;color:var(--ink-3);line-height:1.5}
+.btn{font-family:var(--mono);font-size:.78rem;border:1px solid var(--rule);background:var(--sheet);color:var(--ink);border-radius:6px;padding:5px 10px;cursor:pointer}
+.btn:hover{border-color:var(--cobalt)}
+.btn[aria-pressed="true"]{background:var(--cobalt);border-color:var(--cobalt);color:var(--sheet)}
+
+/* hero */
+.hero{display:grid;gap:24px;padding:clamp(22px,4vw,44px);margin-bottom:8px;background:var(--band);color:var(--band-ink);border-radius:18px;border-bottom:5px solid var(--orange)}
+.hero h1{color:var(--band-ink)}
+.hero .hl{color:var(--orange)}
+.hero a{color:var(--band-ink)}
+.hero .btn{background:var(--band-2);color:var(--band-ink);border-color:var(--band-2)}
+.memo-head{display:grid;grid-template-columns:auto 1fr;gap:4px 18px;font-family:var(--mono);font-size:.82rem;color:var(--band-ink-2);border-left:3px solid var(--orange);padding-left:14px}
+.memo-head b{color:var(--orange);font-weight:500;text-transform:uppercase;letter-spacing:.06em}
+.hero .dek{font-size:1.22rem;max-width:60ch;color:var(--band-ink-2)}
+.roles{display:flex;flex-wrap:wrap;gap:8px}
+.role{font-family:var(--display);font-size:.92rem;font-weight:600;text-decoration:none;color:var(--band);background:var(--orange);border-radius:999px;padding:7px 15px}
+.hero a.role{color:#131a22}
+.role:hover{filter:brightness(1.06)}
+.contact{display:flex;flex-wrap:wrap;gap:10px 20px;align-items:center;font-family:var(--mono);font-size:.84rem;color:var(--band-ink-2)}
+
+/* tenets */
+.tenets{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px 28px;counter-reset:t}
+@media (max-width:720px){.tenets{grid-template-columns:1fr}}
+.tenet{display:grid;grid-template-columns:2.2rem 1fr;gap:4px 10px;align-items:baseline}
+.tenet::before{counter-increment:t;content:counter(t);font-family:var(--display);font-weight:800;font-size:1.5rem;color:var(--orange);grid-row:span 2}
+.tenet h3{font-size:1.06rem}
+.tenet p{color:var(--ink-2);font-size:.98rem}
+
+/* figure */
+.figure{background:var(--sheet);border:1px solid var(--rule);border-radius:12px;padding:20px;display:grid;gap:14px;position:relative;min-width:0}
+.fig-top{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px 16px;align-items:baseline}
+.legend{display:flex;flex-wrap:wrap;gap:14px;font-family:var(--mono);font-size:.78rem;color:var(--ink-2);align-items:center}
+.legend .sw{display:inline-block;width:12px;height:12px;border-radius:3px;margin-right:6px;vertical-align:-1px}
+.scroll{overflow-x:auto}
+.tip{position:absolute;pointer-events:none;background:var(--ink);color:var(--paper);font-family:var(--display);font-size:.86rem;line-height:1.35;padding:8px 10px;border-radius:8px;max-width:270px;opacity:0;transition:opacity .12s;z-index:5}
+.tip.on{opacity:1}
+
+/* LP matrix */
+.matrix{border-collapse:separate;border-spacing:0;min-width:760px;width:100%;font-family:var(--display)}
+.matrix th,.matrix td{padding:0;border-bottom:1px solid var(--rule)}
+.matrix thead th{font-family:var(--mono);font-size:.7rem;font-weight:500;color:var(--ink-3);text-transform:uppercase;letter-spacing:.05em;vertical-align:bottom;padding:0 4px 10px;text-align:center;line-height:1.25}
+.matrix thead th:first-child{text-align:left;padding-left:0}
+.matrix tbody th{text-align:left;font-weight:500;font-size:.93rem;padding:0}
+.matrix tbody th button{all:unset;cursor:pointer;display:flex;justify-content:space-between;gap:10px;width:100%;padding:9px 10px 9px 0;color:var(--ink)}
+.matrix tbody th button:hover{color:var(--cobalt)}
+.matrix tbody th button:focus-visible{outline:2px solid var(--orange)}
+.matrix tbody th .ct{font-family:var(--mono);font-size:.75rem;color:var(--ink-3)}
+.matrix td{text-align:center;height:38px}
+.matrix tr.sel th button{color:var(--cobalt);font-weight:700}
+.matrix tr.sel td,.matrix tr.sel th{background:var(--cobalt-soft)}
+.matrix tr.nostory th button{color:var(--ink-3)}
+.dot{display:inline-block;width:14px;height:14px;border-radius:50%}
+.dot.p{background:var(--orange)}
+.dot.s{border:2px solid var(--orange);width:12px;height:12px}
+
+/* stories */
+.filterbar{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.stories{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+@media (max-width:780px){.stories{grid-template-columns:1fr}}
+.story{background:var(--sheet);border:1px solid var(--rule);border-radius:12px;padding:20px;display:grid;gap:12px;align-content:start;min-width:0;transition:opacity .2s,border-color .2s}
+.story.dim{opacity:.32}
+.story.hit{border-color:var(--cobalt)}
+.story .where{font-family:var(--mono);font-size:.76rem;color:var(--ink-3)}
+.tags{display:flex;flex-wrap:wrap;gap:6px}
+.tag{font-family:var(--mono);font-size:.7rem;border-radius:4px;padding:2px 7px;border:1px solid var(--rule);color:var(--ink-2)}
+.tag.p{background:var(--cobalt-soft);border-color:transparent;color:var(--cobalt)}
+.star{display:grid;grid-template-columns:1.4rem 1fr;gap:6px 10px;margin:0;font-size:.97rem}
+.star dt{font-family:var(--display);font-weight:800;color:var(--cobalt)}
+.star dd{margin:0;color:var(--ink-2)}
+.star dd.res{color:var(--ink)}
+
+/* mechanisms */
+.mech{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+@media (max-width:780px){.mech{grid-template-columns:1fr}}
+.mech div{border-top:3px solid var(--orange);padding-top:12px;display:grid;gap:6px;align-content:start}
+.mech p{font-size:.96rem;color:var(--ink-2)}
+.ask{display:grid;gap:10px;background:var(--sheet);border:1px solid var(--rule);border-radius:12px;padding:20px}
+.ask ol{margin:0;padding-left:20px;display:grid;gap:6px;color:var(--ink-2)}
+.tools{display:flex;flex-wrap:wrap;gap:8px}
+.tools span{font-family:var(--mono);font-size:.8rem;border:1px solid var(--rule);background:var(--sheet);border-radius:5px;padding:3px 8px}
+footer{border-top:4px solid var(--orange);padding-top:22px;display:grid;gap:6px;font-family:var(--mono);font-size:.78rem;color:var(--ink-3)}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head><body>
+
+<div class="wrap">
+
+<header class="hero">
+  <div class="label" style="color:var(--band-ink-2)">Personal portfolio · not affiliated with Amazon</div>
+  <div class="memo-head">
+    <b>From</b><span>Aditi Behera, Business Analyst · Penn State MBAN '26</span>
+    <b>To</b><span>Amazon Relay Marketing (Nashville · Bellevue · Atlanta) and AWS Business &amp; Product Operations (Seattle)</span>
+    <b>Date</b><span>October 2026</span>
+  </div>
+  <h1>I start from the person waiting, then work backwards to the data.</h1>
+  <p class="dek">This page is written as a short narrative instead of a deck, because the evidence reads better in sentences. Every story uses "I", carries a number, and is tagged to the Leadership Principle it best shows.</p>
+  <div class="roles" aria-label="Amazon roles I've applied for">
+    <a class="role" href="https://www.amazon.jobs/en/jobs/10519803/business-analyst-amazon-relay">Business Analyst, Amazon Relay · 10519803</a>
+    <a class="role" href="https://www.amazon.jobs/en/jobs/10563845/operations-analyst">Operations Analyst, AWS · 10563845</a>
+  </div>
+  <div class="contact">
+    <span><span id="em">aditi.behera@outlook.com</span> <button class="btn" type="button" data-copy="em">Copy</button></span>
+    <span><span id="ph">+1 (814) 699 3926</span> <button class="btn" type="button" data-copy="ph">Copy</button></span>
+    <a href="https://github.com/aditibehera">github.com/aditibehera</a>
+    <span>STEM OPT · can start now · open to relocate</span>
+  </div>
+</header>
+
+<section id="tldr">
+  <div class="label">The short version</div>
+  <div class="col" style="display:grid;gap:14px">
+    <p>In five months as a business analyst at Expenzing, a spend-management software company, I <mark>cut an approval cycle 14.6%</mark>, automated invoice exception checks worth <mark>~$250K a year</mark>, and built the dashboards our CEO used every morning, which surfaced <mark>~$500K in risk</mark>.</p>
+    <p>Before that, I ran my own bakery for five years. I bought for <mark>500+ SKUs</mark> from 20+ suppliers and forecast demand at <mark>95% accuracy</mark> in Excel. That job taught me Frugality and Ownership before I knew the words for them.</p>
+    <p>I've just finished a Master of Business Analytics at Penn State, where I also taught 60+ students as a TA. I'm looking for an analyst seat where operational data, process, and customers meet.</p>
+  </div>
+</section>
+
+<section id="tenets">
+  <div class="label">My working tenets</div>
+  <h2>Four rules I hold myself to, unless you know better ones</h2>
+  <div class="tenets">
+    <div class="tenet"><h3>Start from the person waiting.</h3><p>A carrier waiting on a load, a client waiting on approval, a seller waiting on an answer. The metric only matters because someone is waiting.</p></div>
+    <div class="tenet"><h3>Measure before you change anything.</h3><p>I record the baseline first, so the result is a number and not a feeling. Every claim on this page has one.</p></div>
+    <div class="tenet"><h3>Automate the second time.</h3><p>Doing a manual check once teaches me the process. Doing it twice is the signal to build the mechanism.</p></div>
+    <div class="tenet"><h3>Write it down.</h3><p>A fix that lives in one person's head breaks when they leave. Requirements, SOPs, and dashboards outlast me.</p></div>
+  </div>
+</section>
+
+<section id="principles">
+  <div class="label">Leadership Principles, mapped to evidence</div>
+  <h2>Where each story shows up</h2>
+  <p class="col muted">Filled dots mark the principle a story shows most strongly; rings mark a supporting one. Select a principle to filter the stories below. I left blank rows blank instead of stretching a story to fit.</p>
+  <div class="figure" id="matFig">
+    <div class="fig-top">
+      <h3>8 stories × 16 Leadership Principles</h3>
+      <div class="legend"><span><span class="dot p" style="vertical-align:-2px;margin-right:6px"></span>Primary</span><span><span class="dot s" style="vertical-align:-2px;margin-right:6px"></span>Supporting</span></div>
+    </div>
+    <div class="scroll"><table class="matrix" id="matrix" aria-describedby="matnote"></table></div>
+    <p class="note" id="matnote">Rows with no dots are principles I don't yet have a strong, specific story for. I would rather say so than overclaim.</p>
+    <div class="tip" id="tipM" role="status"></div>
+  </div>
+</section>
+
+<section id="stories">
+  <div class="label">STAR stories</div>
+  <h2>Eight stories, told with "I" and a number</h2>
+  <div class="filterbar"><span class="note" id="filterState">Showing all 8 stories</span><button class="btn" id="clearF" type="button" hidden>Show all</button></div>
+  <div class="stories" id="storyGrid"></div>
+</section>
+
+<section id="results">
+  <div class="label">Deliver Results</div>
+  <h2>Three processes, before and after</h2>
+  <p class="col muted">Each process is indexed to 100 before my change, because the percentages are what I measured. Lower is better in every row.</p>
+  <div class="figure" id="impFig">
+    <div class="fig-top">
+      <h3>Indexed to 100 before the change</h3>
+      <div class="legend"><span><span class="sw" style="background:var(--before)"></span>Before</span><span><span class="sw" style="background:var(--after)"></span>After</span></div>
+    </div>
+    <div class="scroll" id="impChart" role="img" aria-label="Approval cycle time 100 to 85.4; manual reconciliation effort 100 to 65; scope changes 100 to 80."></div>
+    <div style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px;align-items:center">
+      <p class="note">Expenzing, Feb–Jul 2025. Cycle time = avg processing hours per transaction; effort = weekly hours.</p>
+      <button class="btn" id="tblBtn" type="button" aria-expanded="false">Show as table</button>
+    </div>
+    <div class="scroll" id="impTable" hidden>
+      <table style="width:100%;border-collapse:collapse;font-family:var(--display);font-size:.92rem">
+        <thead><tr><th class="label" style="text-align:left;padding:8px">Process</th><th class="label" style="text-align:right;padding:8px">Before</th><th class="label" style="text-align:right;padding:8px">After</th><th class="label" style="text-align:right;padding:8px">Change</th></tr></thead>
+        <tbody>
+          <tr><td style="padding:8px;border-top:1px solid var(--rule)">AP approval cycle time</td><td style="text-align:right;padding:8px;border-top:1px solid var(--rule);font-family:var(--mono)">100</td><td style="text-align:right;padding:8px;border-top:1px solid var(--rule);font-family:var(--mono)">85.4</td><td style="text-align:right;padding:8px;border-top:1px solid var(--rule);font-family:var(--mono)">−14.6%</td></tr>
+          <tr><td style="padding:8px;border-top:1px solid var(--rule)">Manual reconciliation effort</td><td style="text-align:right;padding:8px;border-top:1px solid var(--rule);font-family:var(--mono)">100</td><td style="text-align:right;padding:8px;border-top:1px solid var(--rule);font-family:var(--mono)">65</td><td style="text-align:right;padding:8px;border-top:1px solid var(--rule);font-family:var(--mono)">−35%</td></tr>
+          <tr><td style="padding:8px;border-top:1px solid var(--rule)">Scope changes, 15+ rollouts</td><td style="text-align:right;padding:8px;border-top:1px solid var(--rule);font-family:var(--mono)">100</td><td style="text-align:right;padding:8px;border-top:1px solid var(--rule);font-family:var(--mono)">80</td><td style="text-align:right;padding:8px;border-top:1px solid var(--rule);font-family:var(--mono)">−20%</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="tip" id="tipI" role="status"></div>
+  </div>
+</section>
+
+<section id="roles">
+  <div class="label">Fit for these two roles</div>
+  <h2>What each team asks for, and my evidence</h2>
+  <div class="stories">
+    <article class="story"><div class="where">Job 10519803 · Relay Marketing · Nashville, Bellevue or Atlanta</div><h3>Business Analyst, Amazon Relay</h3>
+      <dl class="star" style="grid-template-columns:auto 1fr">
+        <dt style="font-size:.8rem">ASK</dt><dd>Requirements and insights from data and metrics</dd><dt style="font-size:.8rem">ME</dt><dd class="res">BRDs, FRDs, and user stories for 15+ rollouts; dashboards that surfaced ~$500K in risk</dd>
+        <dt style="font-size:.8rem">ASK</dt><dd>Excel or SQL on large data sets</dd><dt style="font-size:.8rem">ME</dt><dd class="res">SQL across 500K+ trip records; Excel pivots and VBA daily</dd>
+        <dt style="font-size:.8rem">ASK</dt><dd>Tableau, R, Python</dd><dt style="font-size:.8rem">ME</dt><dd class="res">Tableau rebalancing maps; Python NLP classifier; R in coursework</dd>
+        <dt style="font-size:.8rem">ASK</dt><dd>Generative AI to speed up reporting</dd><dt style="font-size:.8rem">ME</dt><dd class="res">Claude, ChatGPT, and Copilot every day; automated exception reporting</dd>
+      </dl></article>
+    <article class="story"><div class="where">Job 10563845 · AWS Business &amp; Product Operations · Seattle</div><h3>Operations Analyst, AWS</h3>
+      <dl class="star" style="grid-template-columns:auto 1fr">
+        <dt style="font-size:.8rem">ASK</dt><dd>Purchase orders, invoicing, funding validations</dd><dt style="font-size:.8rem">ME</dt><dd class="res">Fixed a 7-layer PO and invoice approval flow (−14.6% cycle time)</dd>
+        <dt style="font-size:.8rem">ASK</dt><dd>Review data entry, keep data accurate</dd><dt style="font-size:.8rem">ME</dt><dd class="res">Automated three-way matching checks; only true mismatches reach a person</dd>
+        <dt style="font-size:.8rem">ASK</dt><dd>Intermediate Excel: pivot tables, VLOOKUP</dd><dt style="font-size:.8rem">ME</dt><dd class="res">Daily Excel and Power BI dashboards used in CEO meetings</dd>
+        <dt style="font-size:.8rem">ASK</dt><dd>Operational improvements and cross-team projects</dd><dt style="font-size:.8rem">ME</dt><dd class="res">Requirements through launch on 15+ implementations</dd>
+      </dl></article>
+  </div>
+</section>
+
+<section id="mechanisms">
+  <div class="label">Mechanisms I've built</div>
+  <h2>Good intentions don't scale. These did.</h2>
+  <div class="mech">
+    <div><h3>Daily Jira triage</h3><p>A fixed daily review across 15+ concurrent implementations, so client issues were reviewed every day instead of piling up before a deadline.</p></div>
+    <div><h3>Exception-flagging in matching</h3><p>Invoices, POs, and receipts are compared automatically; only true mismatches reach a person. 35% less manual effort, ~$250K a year.</p></div>
+    <div><h3>The morning dashboard</h3><p>Approval times, spend concentration, and dependency ratios across 50+ accounts in one Excel and Power BI view the CEO opened daily.</p></div>
+  </div>
+</section>
+
+<section id="next">
+  <div class="label">What I'd ask in my first week</div>
+  <div class="ask col">
+    <h2 style="font-size:1.4rem">Questions before answers</h2>
+    <ol>
+      <li>Who is the customer of this team's output, and what are they waiting on today?</li>
+      <li>Which metric does the team trust least, and why?</li>
+      <li>What manual step does everyone complain about but nobody owns?</li>
+      <li>What did the last analyst on this team build that is still running?</li>
+    </ol>
+  </div>
+  <div class="tools" aria-label="Tools"><span>SQL</span><span>Excel · Pivot Tables · VLOOKUP · VBA</span><span>Python · Pandas · Scikit-learn</span><span>R</span><span>Tableau</span><span>Power BI · DAX</span><span>Jira</span><span>SAP</span><span>Oracle ERP</span><span>Claude · ChatGPT · Copilot</span><span>BRD · FRD · UAT</span></div>
+</section>
+
+<footer>
+  <p>Aditi Behera · aditi.behera@outlook.com · +1 (814) 699 3926 · github.com/aditibehera</p>
+  <p>Personal portfolio. Not affiliated with or endorsed by Amazon. Leadership Principle names are Amazon's; the stories and numbers are mine.</p>
+</footer>
+</div>
+
+<script>
+(function(){
+const LPS=["Customer Obsession","Ownership","Invent and Simplify","Are Right, A Lot","Learn and Be Curious","Hire and Develop the Best","Insist on the Highest Standards","Think Big","Bias for Action","Frugality","Earn Trust","Dive Deep","Have Backbone; Disagree and Commit","Deliver Results","Strive to be Earth's Best Employer","Success and Scale Bring Broad Responsibility"];
+const S=[
+ {id:"bottleneck",short:"Approval bottleneck",title:"The hidden batch in a 7-layer approval chain",where:"Expenzing · Business Analyst · 2025",p:["Dive Deep","Deliver Results"],s:["Ownership","Bias for Action"],
+  S:"Payables at our clients were slow, and no one could say which of seven approval layers was losing the time.",
+  T:"I set out to find the cause and get it fixed.",
+  A:"I mapped every layer, measured average processing hours per transaction, and found a step that held invoices until a batch of 10 filled up. I brought the evidence to IT and pushed for a fix within days of escalating.",
+  R:"Cycle time dropped 14.6%."},
+ {id:"automation",short:"Exception automation",title:"Letting the system flag exceptions so people don't have to",where:"Expenzing · Business Analyst · 2025",p:["Invent and Simplify","Frugality"],s:["Insist on the Highest Standards","Deliver Results"],
+  S:"Analysts compared invoices, purchase orders, and receipts by hand to catch mismatches.",
+  T:"I wanted people spending time only on the real problems, without adding headcount or new tools.",
+  A:"I implemented automated exception-flagging inside the existing three-way matching workflow, so only true price or quantity mismatches reached a person.",
+  R:"Manual reconciliation effort fell 35%, an estimated $250K a year in savings."},
+ {id:"rollouts",short:"15+ client rollouts",title:"Fifteen enterprise rollouts at once, with fewer surprises",where:"Expenzing · Business Analyst · 2025",p:["Customer Obsession","Earn Trust"],s:["Deliver Results","Insist on the Highest Standards"],
+  S:"I was supporting 15+ enterprise client implementations at the same time, each with its own stakeholders and deadlines.",
+  T:"Clients needed to get what they actually asked for, on schedule, without scope churn late in the project.",
+  A:"I wrote BRDs, FRDs, and user stories with each client, coordinated UAT with their teams, and ran Agile ceremonies with a daily Jira triage so every open issue was reviewed each day.",
+  R:"Every rollout landed on schedule, with 20% fewer scope changes."},
+ {id:"dashboard",short:"CEO dashboard",title:"The dashboard our CEO opened every morning",where:"Expenzing · Business Analyst · 2025",p:["Are Right, A Lot","Insist on the Highest Standards"],s:["Dive Deep","Earn Trust"],
+  S:"Leadership was making daily calls on approvals and client exposure without one trusted view.",
+  T:"I set out to give them numbers they could act on in a morning meeting.",
+  A:"I built Excel and Power BI dashboards tracking approval times, spend concentration, and dependency ratios across 50+ accounts for 8–10 clients in 6 countries.",
+  R:"The dashboards became part of daily CEO meetings and surfaced ~$500K in risk exposure."},
+ {id:"bakery",short:"Sweet Bites founder",title:"Five years owning every number in a small business",where:"Sweet Bites · Founder · 2020–2025",p:["Ownership","Frugality"],s:["Bias for Action","Customer Obsession","Deliver Results"],
+  S:"I ran a retail bakery with 500+ SKUs and 20+ supplier accounts, and margins were thin.",
+  T:"Every purchasing and pricing decision was mine, and so was every mistake.",
+  A:"I built Excel demand-forecasting models, benchmarked supplier costs, negotiated with suppliers, and consolidated SKUs.",
+  R:"Forecasts hit 95% accuracy and operating costs fell 15%."},
+ {id:"pricing",short:"Pricing insights",title:"Turning 10,000 data points into a pricing call",where:"The Bull Traders / Marketti.io · PM Intern · 2024",p:["Customer Obsession","Deliver Results"],s:["Dive Deep","Are Right, A Lot"],
+  S:"Three clients needed to know where to price and whom to target.",
+  T:"I owned the analysis and the recommendation, while also tracking deliverables for an 8-person team.",
+  A:"I analyzed 10,000+ customer data points and built 12-KPI dashboards that turned the findings into pricing and targeting recommendations, and tracked requirements in Jira and Asana.",
+  R:"Client sales rose 10% after the recommendations; milestone completion improved 15%."},
+ {id:"nlp",short:"NLP classifier",title:"Teaching a model to route exceptions",where:"Personal project · Python · GitHub",p:["Learn and Be Curious"],s:["Think Big","Invent and Simplify"],
+  S:"Flagging an exception is only half the job; someone still has to route it to the right owner.",
+  T:"I wanted to test whether that routing could be learned from the exception text.",
+  A:"I built an end-to-end pipeline on 1,440 synthetic AP invoice exceptions, used TF-IDF features, and compared models with 5-fold cross-validation across 7 classes.",
+  R:"A working classifier and a clearer view of where automation helps and where people still need to decide."},
+ {id:"ta",short:"Teaching & leading",title:"Helping 60+ students get unstuck",where:"Penn State Smeal · TA &amp; MBAN Student Leader · 2025–26",p:["Hire and Develop the Best"],s:["Earn Trust","Strive to be Earth's Best Employer"],
+  S:"As a TA for Risk Management and Strategic Management courses, I supported 60+ students; as MBAN student leader I represented a 60+ person cohort.",
+  T:"Students needed to understand the material, and my cohort needed a voice with faculty.",
+  A:"I led weekly discussions, graded 200+ assignments with written feedback, and represented the cohort in faculty meetings, admissions events, and peer mentorship.",
+  R:"During the program I received the Engagement Excellence Award and a Student Leadership Board scholarship."}
+];
+const mat=document.getElementById('matrix'),grid=document.getElementById('storyGrid'),state=document.getElementById('filterState'),clr=document.getElementById('clearF');
+const fig=document.getElementById('matFig'),tipM=document.getElementById('tipM');
+let sel=null;
+// matrix
+let h='<thead><tr><th scope="col">Leadership Principle</th>'+S.map(s=>`<th scope="col">${s.short}</th>`).join('')+'</tr></thead><tbody>';
+LPS.forEach(lp=>{
+  const n=S.filter(s=>s.p.includes(lp)||s.s.includes(lp)).length;
+  h+=`<tr data-lp="${lp}" class="${n?'':'nostory'}"><th scope="row"><button type="button" aria-pressed="false" ${n?'':'disabled'}>${lp}<span class="ct">${n?n+(n>1?' stories':' story'):'—'}</span></button></th>`;
+  S.forEach(s=>{const t=s.p.includes(lp)?'p':s.s.includes(lp)?'s':'';h+=`<td data-s="${s.id}" data-t="${t}">${t?`<span class="dot ${t}" aria-label="${t==='p'?'Primary':'Supporting'}"></span>`:''}</td>`});
+  h+='</tr>';
+});
+mat.innerHTML=h+'</tbody>';
+mat.querySelectorAll('td[data-t]').forEach(td=>{if(!td.dataset.t)return;td.addEventListener('mousemove',ev=>{const s=S.find(x=>x.id===td.dataset.s),lp=td.parentElement.dataset.lp;tipM.innerHTML=`<b>${s.title}</b><br>${td.dataset.t==='p'?'Primary':'Supporting'}: ${lp}`;tipM.classList.add('on');const r=fig.getBoundingClientRect();let x=ev.clientX-r.left+14;x=Math.min(x,r.width-tipM.offsetWidth-8);tipM.style.left=x+'px';tipM.style.top=(ev.clientY-r.top+14)+'px'});td.addEventListener('mouseleave',()=>tipM.classList.remove('on'))});
+// stories
+grid.innerHTML=S.map(s=>`<article class="story" id="st-${s.id}"><div class="where">${s.where}</div><h3>${s.title}</h3><div class="tags">${s.p.map(t=>`<span class="tag p">${t}</span>`).join('')}${s.s.map(t=>`<span class="tag">${t}</span>`).join('')}</div><dl class="star"><dt>S</dt><dd>${s.S}</dd><dt>T</dt><dd>${s.T}</dd><dt>A</dt><dd>${s.A}</dd><dt>R</dt><dd class="res"><mark>${s.R}</mark></dd></dl></article>`).join('');
+function apply(){
+  mat.querySelectorAll('tbody tr').forEach(tr=>{const on=tr.dataset.lp===sel;tr.classList.toggle('sel',on);tr.querySelector('button').setAttribute('aria-pressed',String(on))});
+  let c=0;S.forEach(s=>{const el=document.getElementById('st-'+s.id);const hit=!sel||s.p.includes(sel)||s.s.includes(sel);el.classList.toggle('dim',!hit);el.classList.toggle('hit',!!sel&&hit);if(hit)c++});
+  state.textContent=sel?`${c} ${c>1?'stories':'story'} for ${sel}`:'Showing all 8 stories';clr.hidden=!sel;
+}
+mat.querySelectorAll('tbody th button').forEach(b=>b.addEventListener('click',()=>{const lp=b.closest('tr').dataset.lp;sel=sel===lp?null:lp;apply();if(sel)document.getElementById('stories').scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'start'})}));
+clr.addEventListener('click',()=>{sel=null;apply()});
+apply();
+
+// impact chart
+const NS="http://www.w3.org/2000/svg",css=n=>getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+const mk=(t,a,p)=>{const e=document.createElementNS(NS,t);for(const k in a)e.setAttribute(k,a[k]);p&&p.appendChild(e);return e};
+function impact(){
+  const host=document.getElementById('impChart');host.innerHTML='';
+  const f=document.getElementById('impFig'),tip=document.getElementById('tipI');
+  const rows=[{k:"AP approval cycle time",b:100,a:85.4,d:"−14.6%",how:"Removed a batch bottleneck in a 7-layer workflow"},{k:"Manual reconciliation effort",b:100,a:65,d:"−35%",how:"Automated exception-flagging (~$250K/yr)"},{k:"Scope changes, 15+ rollouts",b:100,a:80,d:"−20%",how:"Tighter BRDs, FRDs, and user stories"}];
+  const W=780,L=220,R=76,top=12,bh=16,gp=4,grp=bh*2+gp,rg=26,H=top+rows.length*(grp+rg)+22,x=v=>L+(W-L-R)*v/100;
+  const s=mk('svg',{viewBox:`0 0 ${W} ${H}`,style:'display:block;width:100%;height:auto;min-width:540px'},host);
+  [0,25,50,75,100].forEach(t=>{mk('line',{x1:x(t),x2:x(t),y1:top-6,y2:H-20,stroke:css('--grid')},s);const tx=mk('text',{x:x(t),y:H-5,'text-anchor':'middle','font-family':'JetBrains Mono,monospace','font-size':11,fill:css('--ink-3')},s);tx.textContent=t});
+  rows.forEach((r,i)=>{const y0=top+i*(grp+rg);const lb=mk('text',{x:0,y:y0+grp/2+5,'font-family':'Schibsted Grotesk,sans-serif','font-size':14,'font-weight':600,fill:css('--ink')},s);lb.textContent=r.k;
+    [['b',css('--before'),'Before'],['a',css('--after'),'After']].forEach(([k,c,nm],j)=>{const y=y0+j*(bh+gp),w=x(r[k])-L;
+      mk('path',{d:`M${L},${y} h${w-4} a4,4 0 0 1 4,4 v${bh-8} a4,4 0 0 1 -4,4 h-${w-4} z`,fill:c},s);
+      const v=mk('text',{x:L+w+8,y:y+bh-3,'font-family':'JetBrains Mono,monospace','font-size':12,fill:css('--ink')},s);v.textContent=k==='a'?`${r.a}  (${r.d})`:r.b;
+      const hit=mk('rect',{x:L,y:y-gp/2,width:W-L,height:bh+gp,fill:'transparent'},s);
+      hit.addEventListener('mousemove',ev=>{tip.innerHTML=`<b>${r.k}</b><br>${nm}: ${r[k]}${k==='a'?' ('+r.d+')':''}<br>${r.how}`;tip.classList.add('on');const rc=f.getBoundingClientRect();let xx=ev.clientX-rc.left+14;xx=Math.min(xx,rc.width-tip.offsetWidth-8);tip.style.left=xx+'px';tip.style.top=(ev.clientY-rc.top+14)+'px'});
+      hit.addEventListener('mouseleave',()=>tip.classList.remove('on'))})});
+}
+impact();
+try{matchMedia('(prefers-color-scheme: dark)').addEventListener('change',impact)}catch(e){}
+new MutationObserver(impact).observe(document.documentElement,{attributes:true,attributeFilter:['data-theme']});
+const tb=document.getElementById('tblBtn'),tt=document.getElementById('impTable');
+tb.addEventListener('click',()=>{tt.hidden=!tt.hidden;tb.setAttribute('aria-expanded',String(!tt.hidden));tb.textContent=tt.hidden?'Show as table':'Hide table'});
+document.querySelectorAll('[data-copy]').forEach(b=>b.addEventListener('click',()=>{const n=document.getElementById(b.dataset.copy);const ok=()=>{b.textContent='Copied';setTimeout(()=>b.textContent='Copy',1400)};const fb=()=>{const r=document.createRange();r.selectNodeContents(n);const s=getSelection();s.removeAllRanges();s.addRange(r);b.textContent='Selected';setTimeout(()=>b.textContent='Copy',1400)};try{navigator.clipboard.writeText(n.textContent).then(ok,fb)}catch(e){fb()}}));
+})();
+</script>
+</body></html>
