@@ -1,0 +1,326 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Aditi Behera · Instacart</title>
+<meta name="description" content="Aditi Behera's work sample for the Instacart Data Analyst, Platform Excellence Ops Analytics role: finding, diagnosing and sizing a retailer cancellation spike.">
+<style>
+:root{
+  color-scheme: light;
+  --bg:#fcfcfb; --surface:#ffffff; --line:#e6e5e1; --grid:#efeeea;
+  --text:#0b0b0b; --text-2:#52514e; --muted:#7a7974;
+  --s1:#2a78d6; --s2:#eb6834; --other:#b9b8b2;
+  --crit:#c93b3a; --good:#1a7f37; --code:#f4f3f0;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme: dark;
+    --bg:#121211; --surface:#1a1a19; --line:#2e2e2c; --grid:#262624;
+    --text:#ffffff; --text-2:#c3c2b7; --muted:#8f8e86;
+    --s1:#3987e5; --s2:#d95926; --other:#55554f;
+    --crit:#e66767; --good:#4fb26a; --code:#232321;
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme: dark;
+  --bg:#121211; --surface:#1a1a19; --line:#2e2e2c; --grid:#262624;
+  --text:#ffffff; --text-2:#c3c2b7; --muted:#8f8e86;
+  --s1:#3987e5; --s2:#d95926; --other:#55554f;
+  --crit:#e66767; --good:#4fb26a; --code:#232321;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  font-size:16px;line-height:1.6}
+main{max-width:860px;margin:0 auto;padding:48px 16px 64px}
+h1{font-size:30px;line-height:1.2;margin:0 0 8px;letter-spacing:-.01em}
+h2{font-size:21px;margin:56px 0 8px;letter-spacing:-.01em}
+h3{font-size:16px;margin:32px 0 6px}
+p{margin:0 0 14px}
+a{color:var(--s1)}
+.kicker{font-size:13px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin:0 0 10px}
+.lede{font-size:18px;color:var(--text-2);max-width:680px}
+.links{display:flex;flex-wrap:wrap;gap:6px 18px;font-size:14px;margin-top:14px}
+.note{font-size:13px;color:var(--muted)}
+.step{display:inline-block;font-size:12px;font-weight:600;color:var(--text-2);border:1px solid var(--line);
+  border-radius:4px;padding:1px 7px;margin-right:8px;vertical-align:2px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:18px 18px 12px;margin:14px 0 18px}
+.chart-title{font-size:14px;font-weight:600;margin:0 0 2px}
+.chart-sub{font-size:13px;color:var(--muted);margin:0 0 10px}
+.legend{display:flex;flex-wrap:wrap;gap:4px 16px;font-size:13px;color:var(--text-2);margin:0 0 6px}
+.legend span::before{content:"";display:inline-block;width:12px;height:3px;border-radius:2px;margin-right:6px;vertical-align:3px;background:var(--c)}
+.legend.bars span::before{height:10px;width:10px;vertical-align:-1px}
+svg{display:block;width:100%;height:auto;overflow:visible}
+svg text{fill:var(--muted);font-size:12px;font-family:inherit}
+.tip{position:fixed;pointer-events:none;background:var(--surface);color:var(--text);border:1px solid var(--line);
+  border-radius:6px;padding:8px 10px;font-size:13px;line-height:1.45;box-shadow:0 4px 14px rgba(0,0,0,.12);opacity:0;transition:opacity .08s;z-index:9}
+.tip b{font-weight:600}
+table{width:100%;border-collapse:collapse;font-size:14px;font-variant-numeric:tabular-nums}
+th,td{text-align:left;padding:8px 8px;border-bottom:1px solid var(--line)}
+th{font-size:12px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.04em}
+td.num,th.num{text-align:right}
+.tag{font-size:12px;font-weight:600;white-space:nowrap}
+.tag.bad{color:var(--crit)} .tag.ok{color:var(--good)} .tag.mut{color:var(--muted);font-weight:400}
+.tiles{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:14px 0}
+.tile{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:14px 16px}
+.tile .v{font-size:28px;font-weight:650;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.tile .l{font-size:13px;color:var(--text-2)}
+pre{background:var(--code);border:1px solid var(--line);border-radius:8px;padding:14px;overflow-x:auto;font-size:13px;line-height:1.5;margin:10px 0 16px}
+code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+ol,ul{padding-left:20px;margin:0 0 14px} li{margin:0 0 8px}
+.ev{border-top:1px solid var(--line);padding:16px 0}
+.ev h3{margin:0 0 4px}
+.fit td:first-child{width:38%}
+.scroll{overflow-x:auto}
+.card,pre{max-width:100%;min-width:0}
+@media (max-width:620px){th,td{padding:7px 6px} table{font-size:13px}}
+footer{margin-top:56px;padding-top:16px;border-top:1px solid var(--line)}
+@media (max-width:620px){.tiles{grid-template-columns:1fr} h1{font-size:26px}}
+</style>
+</head>
+<body>
+<main>
+
+<p class="kicker">Work sample · Data Analyst, Platform Excellence Ops Analytics · Instacart</p>
+<h1>Aditi Behera</h1>
+<p class="lede">The job is finding defects in the grocery experience and getting them fixed. Below is one worked example of that loop on a synthetic dataset: a retailer's cancellation spike, from alert to root cause to sizing to recommendation.</p>
+<div class="links">
+  <a href="mailto:aditi.behera@outlook.com">aditi.behera@outlook.com</a>
+  <a href="https://github.com/AditiBehera">github.com/AditiBehera</a>
+  <a href="https://www.linkedin.com/">LinkedIn</a>
+  <a href="https://instacart.careers/job/?gh_jid=8249894">The role</a>
+</div>
+<p class="note" style="margin-top:12px">Master of Business Analytics, Penn State Smeal (Aug 2026) · B.Tech, Computer Science · On F-1 OPT (STEM-eligible), can start immediately</p>
+
+<h2>Case study: a cancellation spike at one retailer</h2>
+<p class="note">All data is synthetic: 6 fictional retailers, 12 weeks, about 240,000 orders, built to mirror the cancellation, reschedule and timeliness problems the PEO team owns. The SQL is written for Snowflake.</p>
+
+<h3><span class="step">1 · Monitor</span>Retailer C breaks away from its own history in Week 9</h3>
+<p>Weekly cancellation rate is the first view I'd check each morning. Five retailers stay inside their usual band. Retailer C moves from about 3.2% to 5.7% in a single week and stays there.</p>
+<div class="card">
+  <p class="chart-title">Weekly order cancellation rate by retailer</p>
+  <p class="chart-sub">% of orders cancelled · Weeks 1–12</p>
+  <div class="legend"><span style="--c:var(--s1)">Retailer C</span><span style="--c:var(--other)">Retailers A, B, D, E, F</span></div>
+  <div id="c1"></div>
+</div>
+
+<h3><span class="step">2 · Detect</span>The obvious alert rule would have missed most of it</h3>
+<p>A common first rule flags a week when its rate sits 3 standard deviations above the trailing 6 weeks. Run on this data, it raised two alerts. One was false: Retailer A moved only 0.3 points, but its history is so steady that a tiny move looked significant. Worse, after Week 9 the spike entered Retailer C's own baseline, so Weeks 10–12 stopped looking unusual.</p>
+<p>I changed two things. Flagged weeks are excluded from future baselines, and an alert also needs a move of at least 0.5 points so it matters operationally.</p>
+<div class="card scroll" style="padding:6px 6px 0">
+  <table style="min-width:560px">
+    <thead><tr><th>Retailer · Week</th><th class="num">Rate</th><th class="num">Baseline</th><th class="num">Change</th><th>Simple rule</th><th>Revised rule</th></tr></thead>
+    <tbody id="t1"></tbody>
+  </table>
+</div>
+<p><b>Result:</b> the simple rule raised 2 alerts, 1 of them false, and missed 3 of the 4 spike weeks. The revised rule caught all 4 spike weeks with no false alerts.</p>
+<pre><code>-- Weekly cancel rate per retailer, scored against a clean trailing baseline
+WITH weekly AS (
+  SELECT o.retailer_id,
+         DATE_TRUNC('week', o.delivery_window_start)  AS wk,
+         COUNT_IF(o.status = 'cancelled') / COUNT(*)   AS cancel_rate
+  FROM   fulfillment.orders o
+  GROUP  BY 1, 2
+),
+labeled AS (                                  -- weeks already confirmed as incidents
+  SELECT w.*, (i.wk IS NOT NULL) AS is_incident
+  FROM   weekly w
+  LEFT JOIN ops.confirmed_incidents i
+         ON i.retailer_id = w.retailer_id AND i.wk = w.wk
+),
+scored AS (                                   -- incident weeks are NULLed out of the baseline
+  SELECT l.*,
+         AVG(IFF(is_incident, NULL, cancel_rate))    OVER w6 AS base_mean,
+         STDDEV(IFF(is_incident, NULL, cancel_rate)) OVER w6 AS base_sd
+  FROM   labeled l
+  WINDOW w6 AS (PARTITION BY retailer_id ORDER BY wk
+                ROWS BETWEEN 6 PRECEDING AND 1 PRECEDING)
+)
+SELECT retailer_id, wk, cancel_rate, base_mean,
+       (cancel_rate - base_mean) / NULLIF(base_sd, 0) AS z
+FROM   scored
+WHERE  (cancel_rate - base_mean) / NULLIF(base_sd, 0) &gt;= 3
+  AND  cancel_rate - base_mean &gt;= 0.005;     -- and at least 0.5 pts</code></pre>
+
+<h3><span class="step">3 · Diagnose</span>One cancellation reason explains almost all of it</h3>
+<p>Splitting Retailer C's cancellations by reason, four of the five reasons barely move. "Store closed before pickup" goes from 1.9 to 22.0 per 1,000 orders. Drilling into stores, 6 of Retailer C's 40 stores account for 81% of the extra cancellations. All six shortened their evening hours in Week 9, but the slot scheduler kept offering pickup windows based on the old hours.</p>
+<div class="card">
+  <p class="chart-title">Retailer C cancellations by reason, before vs. after Week 9</p>
+  <p class="chart-sub">Cancellations per 1,000 orders · Before = Weeks 3–8, After = Weeks 9–12</p>
+  <div class="legend bars"><span style="--c:var(--other)">Before</span><span style="--c:var(--s1)">After</span></div>
+  <div id="c2"></div>
+</div>
+<pre><code>-- Which stores drive the excess "store closed" cancellations?
+SELECT o.store_id,
+       COUNT_IF(o.cancel_reason = 'store_closed')                          AS closed_cancels,
+       RATIO_TO_REPORT(COUNT_IF(o.cancel_reason = 'store_closed')) OVER () AS share_of_total,
+       MAX(h.hours_changed_at)                                             AS last_hours_change,
+       COUNT_IF(o.slot_end_local::TIME &gt; h.close_time_local)               AS slots_after_close
+FROM   fulfillment.orders o
+JOIN   retailer.store_hours h ON h.store_id = o.store_id
+WHERE  o.retailer_id = 'C'
+  AND  o.delivery_window_start &gt;= :week_9_start
+GROUP  BY o.store_id
+ORDER  BY closed_cancels DESC;</code></pre>
+
+<h3><span class="step">4 · Size</span>What it costs if nothing changes</h3>
+<div class="tiles">
+  <div class="tile"><div class="v">+2.3 pts</div><div class="l">Cancellation rate, 3.20% → 5.52%</div></div>
+  <div class="tile"><div class="v">~111</div><div class="l">Extra cancelled orders each week</div></div>
+  <div class="tile"><div class="v">~5,800</div><div class="l">Orders lost per year if left unfixed</div></div>
+</div>
+<p class="note">Each one is a customer who planned a meal around an order that never arrived, so I'd also track repeat-order rate for affected customers as a second measure of the cost.</p>
+
+<h3><span class="step">5 · Recommend</span>Three fixes, each with an owner</h3>
+<ol>
+  <li><b>Stop selling slots after closing time.</b> Ask Engineering to block any pickup window that ends after the store's current close time. This removes the defect at the source.</li>
+  <li><b>Add a store-hours freshness check to the retailer quality dashboard.</b> Flag any store whose hours changed in the last 14 days, so Retailer Ops can confirm the change reached scheduling.</li>
+  <li><b>Ship the revised alert rule.</b> Clean baselines plus a minimum change, so a persistent spike keeps alerting and steady retailers stop raising false alarms.</li>
+</ol>
+
+<h3><span class="step">6 · Validate</span>Checks before anything goes in a deck</h3>
+<ul>
+  <li>Order counts reconcile to the weekly totals, with no duplicate order IDs.</li>
+  <li>Weeks are bucketed in each store's local time zone, so late-evening orders don't land in the wrong week.</li>
+  <li>The "after" period excludes partial weeks.</li>
+  <li>When an AI assistant drafts SQL like the store-level query, I check its output by hand against a few stores before trusting it.</li>
+</ul>
+
+<h2>Where I've done this for real</h2>
+<div class="ev">
+  <h3>Found the bottleneck stalling invoice approvals · Expenzing</h3>
+  <p>Enterprise clients' invoice approvals kept stalling. I traced the workflow end to end and found a 10-item batch limit feeding a 7-layer approval chain. I took the evidence to IT, and they shipped a workaround. Same loop as above: spot the defect, find the mechanism, get the owner to fix it.</p>
+</div>
+<div class="ev">
+  <h3>Dashboards leadership acted on · Expenzing</h3>
+  <p>Built Power BI and Excel dashboards that combined spend and contract data across entities, surfacing about $500K in risk exposure for leadership review.</p>
+</div>
+<div class="ev">
+  <h3>Automated away manual work · Expenzing</h3>
+  <p>Automated invoice approval, vendor payment and reconciliation steps, contributing to roughly $250K in annual operational savings.</p>
+</div>
+<div class="ev">
+  <h3>Five years running a bakery · Sweet Bites</h3>
+  <p>Ran my own retail bakery. Built Excel demand forecasting that reached 95% accuracy, so I know first-hand what a cancelled order costs the business behind it.</p>
+</div>
+
+<h2>How I match the requirements</h2>
+<div class="card fit" style="padding:6px 6px 0">
+  <table>
+    <tbody>
+      <tr><td>Advanced SQL, Excel/Sheets</td><td>SQL in coursework and projects (500K+ trip analysis); advanced Excel, VBA and Power Query</td></tr>
+      <tr><td>Visualizing large datasets</td><td>Tableau and Power BI dashboards; this page's charts</td></tr>
+      <tr><td>Insight decks for cross-functional teams</td><td>Client demos and leadership readouts at Expenzing; Smeal Management Consulting certificate</td></tr>
+      <tr><td>Product and engineering collaboration</td><td>Wrote BRDs, FRDs and user stories; worked through UAT in Agile sprints</td></tr>
+      <tr><td>GitHub, Jira</td><td>Use both regularly; projects at github.com/AditiBehera</td></tr>
+      <tr><td>AI tools with validation</td><td>Use AI daily to draft queries and analysis, and check outputs by hand (step 6 above)</td></tr>
+      <tr><td>Snowflake, Mode</td><td>Not yet used on the job. The SQL above is written in Snowflake syntax, and I'd expect to ramp up on both quickly.</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<h2>My first 30 days</h2>
+<ul>
+  <li><b>Week 1–2:</b> Learn how every Retailer Quality metric is defined and spend time with the people who act on the alerts.</li>
+  <li><b>Week 3:</b> Rerun the last quarter's escalations against current alert rules to see what was caught late or missed.</li>
+  <li><b>Week 4:</b> Present one diagnosed issue end to end, with a sized fix and an owner.</li>
+</ul>
+
+<footer>
+  <p class="note">Built by Aditi Behera for this application. The dataset, retailers and incident are synthetic and do not use Instacart data. The method and SQL patterns are what I would apply on the job.</p>
+</footer>
+</main>
+
+<div class="tip" id="tip"></div>
+
+<script>
+const rates = {"Retailer A":[2.87,3.22,2.9,2.97,2.95,2.95,2.85,3.02,3.03,3.26,3.22,3.04],"Retailer B":[3.67,3.72,3.47,3.36,3.52,3.45,3.67,3.41,3.68,3.8,3.34,3.43],"Retailer C":[3.2,3.52,3.17,3.35,3.15,3.09,3.37,3.08,5.72,5.43,5.71,5.2],"Retailer D":[4.29,4.01,4.25,4.06,4.01,3.68,4.28,3.88,4.3,3.74,3.77,3.85],"Retailer E":[3.63,3.61,3.91,3.55,3.86,3.52,4.05,3.63,3.57,3.76,3.62,3.77],"Retailer F":[4.55,4.36,4.25,4.32,4.67,4.43,4.66,4.63,4.17,4.31,4.6,4.71]};
+const flags = [
+ {r:"Retailer A",w:"W10",rate:3.26,base:2.96,d:0.30,naive:true, rev:false},
+ {r:"Retailer C",w:"W9", rate:5.72,base:3.20,d:2.52,naive:true, rev:true},
+ {r:"Retailer C",w:"W10",rate:5.43,base:3.20,d:2.23,naive:false,rev:true},
+ {r:"Retailer C",w:"W11",rate:5.71,base:3.20,d:2.50,naive:false,rev:true},
+ {r:"Retailer C",w:"W12",rate:5.20,base:3.20,d:2.00,naive:false,rev:true}];
+const reasons = ["Item out of stock","Store closed before pickup","Shopper unavailable","Customer request","Other"];
+const pre = [12.2,1.9,7.1,8.6,2.2], post = [15.4,22.0,7.0,8.6,2.3];
+
+const tip = document.getElementById('tip');
+function showTip(html, e){ tip.innerHTML = html; tip.style.opacity = 1;
+  const x = Math.min(e.clientX + 14, window.innerWidth - tip.offsetWidth - 8);
+  tip.style.left = x + 'px'; tip.style.top = (e.clientY + 14) + 'px'; }
+function hideTip(){ tip.style.opacity = 0; }
+const NS = 'http://www.w3.org/2000/svg';
+function el(n, a, p){ const e = document.createElementNS(NS, n); for (const k in a) e.setAttribute(k, a[k]); if (p) p.appendChild(e); return e; }
+
+// Keep chart text readable when the SVG scales down on phones
+function fitText(){ document.querySelectorAll('#c1 svg, #c2 svg').forEach(svg => {
+  const k = Math.max(1, 800 / Math.max(1, svg.clientWidth));
+  svg.querySelectorAll('text').forEach(t => t.style.fontSize = Math.min(12 * k, 22) + 'px'); }); }
+window.addEventListener('resize', fitText);
+// Table
+const tb = document.getElementById('t1');
+flags.forEach(f => {
+  const naive = f.naive ? (f.rev ? '<span class="tag ok">Alert ✓</span>' : '<span class="tag bad">False alert ✕</span>')
+                        : (f.rev ? '<span class="tag bad">Missed ✕</span>' : '<span class="tag mut">—</span>');
+  const rev = f.rev ? '<span class="tag ok">Alert ✓</span>' : '<span class="tag ok">No alert ✓</span>';
+  tb.insertAdjacentHTML('beforeend', `<tr><td>${f.r} · ${f.w}</td><td class="num">${f.rate.toFixed(2)}%</td><td class="num">${f.base.toFixed(2)}%</td><td class="num">+${f.d.toFixed(2)} pts</td><td>${naive}</td><td>${rev}</td></tr>`);
+});
+
+// Chart 1: lines
+(function(){
+  const W = 800, H = 300, m = {l:40, r:92, t:10, b:28};
+  const svg = el('svg', {viewBox:`0 0 ${W} ${H}`, role:'img', 'aria-label':'Line chart: Retailer C cancellation rate jumps from about 3.2% to 5.7% in week 9 while other retailers stay between 2.9% and 4.7%.'}, document.getElementById('c1'));
+  const x = i => m.l + i * (W - m.l - m.r) / 11, y0 = 2.5, y1 = 6.0;
+  const y = v => m.t + (y1 - v) / (y1 - y0) * (H - m.t - m.b);
+  [3,4,5,6].forEach(v => { el('line', {x1:m.l, x2:W-m.r, y1:y(v), y2:y(v), stroke:'var(--grid)'}, svg);
+    el('text', {x:m.l-8, y:y(v)+4, 'text-anchor':'end'}, svg).textContent = v + '%'; });
+  for (let i = 0; i < 12; i++) el('text', {x:x(i), y:H-8, 'text-anchor':'middle'}, svg).textContent = 'W' + (i+1);
+  const order = Object.keys(rates).filter(r => r !== 'Retailer C').concat(['Retailer C']);
+  order.forEach(r => {
+    const c = r === 'Retailer C' ? 'var(--s1)' : 'var(--other)';
+    el('polyline', {points: rates[r].map((v,i) => x(i)+','+y(v)).join(' '), fill:'none', stroke:c,
+      'stroke-width':2, 'stroke-linejoin':'round', 'stroke-linecap':'round'}, svg);
+    const last = rates[r][11];
+    if (r === 'Retailer C') { const t = el('text', {x:W-m.r+8, y:y(last)+4}, svg); t.textContent = 'Retailer C'; t.style.fill = 'var(--text)'; }
+  });
+  const cross = el('line', {y1:m.t, y2:H-m.b, stroke:'var(--muted)', 'stroke-dasharray':'3 3', opacity:0}, svg);
+  const dot = el('circle', {r:4.5, fill:'var(--s1)', stroke:'var(--surface)', 'stroke-width':2, opacity:0}, svg);
+  const hit = el('rect', {x:m.l-10, y:0, width:W-m.l-m.r+20, height:H, fill:'transparent'}, svg);
+  hit.addEventListener('mousemove', e => {
+    const pt = svg.createSVGPoint(); pt.x = e.clientX; pt.y = e.clientY;
+    const p = pt.matrixTransform(svg.getScreenCTM().inverse());
+    const i = Math.max(0, Math.min(11, Math.round((p.x - m.l) / ((W - m.l - m.r) / 11))));
+    cross.setAttribute('x1', x(i)); cross.setAttribute('x2', x(i)); cross.setAttribute('opacity', 1);
+    dot.setAttribute('cx', x(i)); dot.setAttribute('cy', y(rates['Retailer C'][i])); dot.setAttribute('opacity', 1);
+    const others = Object.keys(rates).filter(r => r !== 'Retailer C').map(r => rates[r][i]);
+    showTip(`<b>Week ${i+1}</b><br>Retailer C: <b>${rates['Retailer C'][i].toFixed(2)}%</b><br>Other retailers: ${Math.min(...others).toFixed(2)}–${Math.max(...others).toFixed(2)}%`, e);
+  });
+  hit.addEventListener('mouseleave', () => { cross.setAttribute('opacity', 0); dot.setAttribute('opacity', 0); hideTip(); });
+})();
+
+// Chart 2: grouped horizontal bars
+(function(){
+  const W = 800, row = 46, m = {l:190, r:50, t:4, b:24}, H = m.t + m.b + row * reasons.length;
+  const svg = el('svg', {viewBox:`0 0 ${W} ${H}`, role:'img', 'aria-label':'Bar chart: store-closed cancellations rise from 1.9 to 22.0 per 1,000 orders; other reasons are flat.'}, document.getElementById('c2'));
+  const max = 25, x = v => m.l + v / max * (W - m.l - m.r), bh = 14;
+  [0,5,10,15,20,25].forEach(v => { el('line', {x1:x(v), x2:x(v), y1:m.t, y2:H-m.b, stroke:'var(--grid)'}, svg);
+    el('text', {x:x(v), y:H-6, 'text-anchor':'middle'}, svg).textContent = v; });
+  reasons.forEach((rs, i) => {
+    const yb = m.t + i * row + 8;
+    const lab = el('text', {x:m.l-12, y:yb+bh+3, 'text-anchor':'end'}, svg); lab.textContent = rs;
+    if (i === 1) { lab.style.fill = 'var(--text)'; lab.style.fontWeight = 600; }
+    [[pre[i],'var(--other)',yb,'Before'],[post[i],'var(--s1)',yb+bh+2,'After']].forEach(([v,c,yy,nm]) => {
+      const w = Math.max(2, x(v) - m.l);
+      el('path', {d:`M${m.l},${yy} h${w-4} a4,4 0 0 1 4,4 v${bh-8} a4,4 0 0 1 -4,4 h-${w-4} z`, fill:c}, svg);
+      if (i === 1) { const t = el('text', {x:m.l+w+6, y:yy+bh-3}, svg); t.textContent = v.toFixed(1); t.style.fill = 'var(--text)'; }
+    });
+    const hit = el('rect', {x:0, y:m.t+i*row, width:W, height:row, fill:'transparent'}, svg);
+    hit.addEventListener('mousemove', e => showTip(`<b>${rs}</b><br>Before: ${pre[i].toFixed(1)} per 1,000<br>After: <b>${post[i].toFixed(1)}</b> per 1,000`, e));
+    hit.addEventListener('mouseleave', hideTip);
+  });
+})();
+fitText();
+</script>
+</body>
+</html>
