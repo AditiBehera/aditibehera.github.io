@@ -1,0 +1,360 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Aditi Behera for SAP Concur</title>
+<meta name="description" content="Aditi Behera, Penn State MBAN '26: a portfolio built for SAP Concur.">
+<style>
+:root{--accent:#0a6ed1;--ink:#0a6ed1;--on-accent:#ffffff;--accent-soft:#e3f0fc;--bg:#fbfbfa;--card:#ffffff;--text:#16181d;--muted:#5d6470;--line:#e6e7ea;--good:#1f8a4c;--warn:#b7791f;--bad:#c0392b}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--bg:#111317;--card:#1a1d23;--text:#eceef2;--muted:#9aa2ad;--line:#2b2f37;--accent-soft:#16314d;--ink:#5aa9f0}}
+:root[data-theme="dark"]{--bg:#111317;--card:#1a1d23;--text:#eceef2;--muted:#9aa2ad;--line:#2b2f37;--accent-soft:#16314d;--ink:#5aa9f0}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;font-size:16px;line-height:1.6}
+a{color:var(--ink)}
+.wrap{max-width:1040px;margin:0 auto;padding:0 20px}
+.top{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;justify-content:space-between;align-items:center;height:56px;gap:12px}
+.top b{font-size:15px}
+.top nav a{font-size:14px;color:var(--muted);text-decoration:none;margin-left:18px}
+.top nav a:hover{color:var(--text)}
+.btn{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line);background:var(--card);color:var(--text);padding:9px 16px;border-radius:999px;font:inherit;font-size:14px;cursor:pointer;text-decoration:none}
+.btn.primary{background:var(--accent);color:var(--on-accent);border-color:var(--accent)}
+.btn:hover{filter:brightness(.96)}
+section{padding:56px 0;border-bottom:1px solid var(--line)}
+.eyebrow{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink);font-weight:600;margin:0 0 8px}
+h1{font-size:40px;line-height:1.15;margin:0 0 14px;letter-spacing:-.01em}
+h2{font-size:28px;line-height:1.2;margin:0 0 8px;letter-spacing:-.01em}
+h3{font-size:17px;margin:0 0 6px}
+.lede{color:var(--muted);margin:0 0 24px;max-width:640px}
+.hero{display:grid;grid-template-columns:1fr 300px;gap:40px;align-items:center;padding-top:48px}
+.hero img{width:100%;aspect-ratio:1/1;object-fit:cover;border-radius:20px;background:var(--accent-soft)}
+.badge{display:inline-block;font-size:12px;font-weight:600;padding:4px 10px;border-radius:999px;background:var(--accent-soft);color:var(--text);margin-bottom:14px}
+.cta{display:flex;flex-wrap:wrap;gap:10px;margin:22px 0 14px}
+.facts{font-size:14px;color:var(--muted)}
+.caption{margin-top:16px;padding:14px 16px;border-left:3px solid var(--accent);background:var(--card);border-radius:0 10px 10px 0;font-size:15px;min-height:52px;display:none}
+.caption.on{display:block}
+.caption span.now{background:var(--accent-soft);border-radius:4px}
+.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px}
+.need{cursor:pointer;transition:border-color .15s}
+.need:hover,.need.open{border-color:var(--accent)}
+.need .num{font-size:30px;font-weight:700;color:var(--ink);line-height:1.1;margin:10px 0 2px}
+.need .lab{font-size:13px;color:var(--muted)}
+.need .proof{display:none;font-size:14px;margin-top:10px;padding-top:10px;border-top:1px solid var(--line)}
+.need.open .proof{display:block}
+.dash{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px}
+.dash-head{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;align-items:flex-start;margin-bottom:16px}
+.dash-head small{color:var(--muted)}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{border:1px solid var(--line);background:transparent;color:var(--text);padding:6px 12px;border-radius:999px;font:inherit;font-size:13px;cursor:pointer}
+.chip.on{background:var(--accent);color:var(--on-accent);border-color:var(--accent)}
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:16px}
+.kpi{border:1px solid var(--line);border-radius:12px;padding:12px 14px}
+.kpi b{display:block;font-size:24px}
+.kpi span{font-size:12px;color:var(--muted)}
+.kpi em{font-style:normal;font-size:12px;font-weight:600}
+.panels{display:grid;grid-template-columns:1.4fr 1fr;gap:14px;margin-bottom:14px}
+.panel{border:1px solid var(--line);border-radius:12px;padding:14px}
+.panel h4{margin:0 0 8px;font-size:14px}
+.panel .ai{font-size:11px;font-weight:700;background:var(--accent-soft);padding:2px 6px;border-radius:4px;margin-left:6px}
+svg text{fill:var(--muted);font-size:11px}
+table{width:100%;border-collapse:collapse;font-size:14px}
+th{text-align:left;font-size:12px;color:var(--muted);font-weight:600;border-bottom:1px solid var(--line);padding:8px 6px}
+td{border-bottom:1px solid var(--line);padding:9px 6px;vertical-align:top}
+.st{font-size:12px;font-weight:600;padding:2px 8px;border-radius:999px;white-space:nowrap}
+.st.red{background:color-mix(in srgb,var(--bad) 15%,transparent);color:var(--bad)}
+.st.amber{background:color-mix(in srgb,var(--warn) 18%,transparent);color:var(--warn)}
+.st.green{background:color-mix(in srgb,var(--good) 15%,transparent);color:var(--good)}
+.note{font-size:13px;color:var(--muted);margin-top:12px}
+.stories{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.story{cursor:pointer}
+.story .tag{font-size:12px;color:var(--ink);font-weight:600}
+.story .res{font-size:22px;font-weight:700;margin:6px 0 2px}
+.story .star{display:none;font-size:14px;margin-top:10px;border-top:1px solid var(--line);padding-top:10px}
+.story .star p{margin:0 0 8px}
+.story.open{border-color:var(--accent)}
+.story.open .star{display:block}
+.plan{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.plan .card b{color:var(--ink);font-size:13px}
+.plan ul{padding-left:18px;margin:8px 0 0;font-size:14px}
+.pr{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:28px}
+.pr .dateline{font-size:12px;color:var(--muted);letter-spacing:.06em;text-transform:uppercase}
+.pr h3{font-size:22px;line-height:1.3;margin:10px 0 12px}
+.faq{margin-top:18px;border-top:1px solid var(--line)}
+.faq details{border-bottom:1px solid var(--line);padding:12px 0}
+.faq summary{cursor:pointer;font-weight:600}
+.contact{display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:start}
+.links{display:flex;flex-wrap:wrap;gap:10px}
+footer{padding:28px 0 120px;font-size:13px;color:var(--muted)}
+.hl{outline:3px solid var(--accent);outline-offset:6px;border-radius:12px;transition:outline-color .3s}
+/* bot */
+#botBtn{position:fixed;right:20px;bottom:20px;z-index:40;box-shadow:0 6px 24px rgba(0,0,0,.18)}
+#bot{position:fixed;right:20px;bottom:76px;width:360px;max-width:calc(100vw - 32px);height:500px;max-height:calc(100vh - 110px);background:var(--card);border:1px solid var(--line);border-radius:16px;box-shadow:0 12px 40px rgba(0,0,0,.2);display:none;flex-direction:column;z-index:40;overflow:hidden}
+#bot.on{display:flex}
+#bot header{padding:12px 14px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center}
+#bot header small{display:block;color:var(--muted);font-size:11px}
+#bot .x{background:none;border:0;font-size:20px;color:var(--muted);cursor:pointer}
+#msgs{flex:1;overflow:auto;padding:14px;display:flex;flex-direction:column;gap:10px}
+.m{max-width:88%;padding:9px 12px;border-radius:14px;font-size:14px;line-height:1.5}
+.m.b{background:var(--accent-soft);align-self:flex-start;border-bottom-left-radius:4px}
+.m.u{background:var(--accent);color:var(--on-accent);align-self:flex-end;border-bottom-right-radius:4px}
+#sugg{display:flex;flex-wrap:wrap;gap:6px;padding:0 14px 10px}
+#sugg .chip{font-size:12px;padding:5px 10px}
+#bot form{display:flex;gap:8px;padding:10px;border-top:1px solid var(--line)}
+#bot input{flex:1;border:1px solid var(--line);background:var(--bg);color:var(--text);border-radius:999px;padding:9px 14px;font:inherit;font-size:14px}
+@media (max-width:860px){.hero{grid-template-columns:1fr}.hero img{max-width:220px}.grid4,.kpis{grid-template-columns:repeat(2,1fr)}.panels,.stories,.plan,.contact{grid-template-columns:1fr}h1{font-size:30px}.top nav{display:none}}
+</style>
+</head>
+<body>
+<div class="top"><div class="wrap"><b>Aditi Behera <span style="color:var(--muted);font-weight:400">for SAP Concur</span></b>
+<nav><a href="#brief">The brief</a><a href="#dashboard">Dashboard</a><a href="#stories">Stories</a><a href="#plan">First 90 days</a><a href="#talk">Contact</a></nav></div></div>
+
+<div class="wrap">
+<section class="hero" id="hero">
+<div>
+<span class="badge" id="badge"></span>
+<h1 id="headline"></h1>
+<p class="lede" id="sub"></p>
+<div class="cta">
+<button class="btn primary" id="play">▶ Play my intro</button>
+<a class="btn" href="#dashboard">Skip to the dashboard</a>
+<button class="btn" id="askHero">Ask AI Aditi</button>
+</div>
+<div class="links" style="margin-bottom:12px">
+<a class="btn" href="https://aditibehera.github.io/resume.pdf" target="_blank" rel="noopener">Resume</a>
+<a class="btn" href="https://www.linkedin.com/in/aditi-behera-27bab8237" target="_blank" rel="noopener">LinkedIn</a>
+<a class="btn" href="https://github.com/aditibehera" target="_blank" rel="noopener">GitHub</a>
+<a class="btn" href="https://aditibehera.github.io/portfolio.html" target="_blank" rel="noopener">Full portfolio</a>
+</div>
+<p class="facts">Penn State Master of Business Analytics '26 · MBA in Business Analytics (ITM) · B.Tech in Computer Science · STEM OPT · can start now · open to relocate</p>
+<div class="caption" id="caption"></div>
+</div>
+<img src="https://aditibehera.github.io/photo.jpg" alt="Aditi Behera">
+</section>
+
+<section id="brief">
+<p class="eyebrow">The brief</p>
+<h2 id="briefTitle"></h2>
+<p class="lede">Pick one. Each has a number I can defend in an interview.</p>
+<div class="grid4" id="needs"></div>
+</section>
+
+<section id="dashboard">
+<p class="eyebrow">Working backwards</p>
+<h2 id="dashTitle"></h2>
+<p class="lede" id="dashLede"></p>
+<div class="dash">
+<div class="dash-head"><div><b id="dashName"></b><br><small>A concept I designed for this page · demo data</small></div><div class="chips" id="filters"></div></div>
+<div class="kpis" id="kpis"></div>
+<div class="panels">
+<div class="panel"><h4 id="lineTitle"></h4><svg id="line" viewBox="0 0 520 220" width="100%" role="img"></svg></div>
+<div class="panel"><h4><span id="barTitle"></span><span class="ai">AI</span></h4><svg id="bars" viewBox="0 0 360 220" width="100%" role="img"></svg></div>
+</div>
+<div class="panel"><h4>Watch list</h4><div style="overflow-x:auto"><table><thead><tr><th>Item</th><th>Signal</th><th>Status</th><th>Owner</th><th>Next step</th></tr></thead><tbody id="watch"></tbody></table></div></div>
+<p class="note" id="dashNote"></p>
+</div>
+</section>
+
+<section id="stories">
+<p class="eyebrow">Proof</p>
+<h2>Real stories, real numbers</h2>
+<p class="lede">Tap a card for the full story: situation, what I did, and what changed.</p>
+<div class="stories" id="storyGrid"></div>
+</section>
+
+<section id="plan">
+<p class="eyebrow">If I join</p>
+<h2 id="planTitle"></h2>
+<p class="lede" id="planLede"></p>
+<div class="plan" id="planGrid"></div>
+</section>
+
+<section id="pr">
+<p class="eyebrow">Written backwards</p>
+<h2>The announcement I'd like to help write</h2>
+<p class="lede">Amazon-style: write the result first, then work out how to get there.</p>
+<div class="pr">
+<div class="dateline" id="prDate"></div>
+<h3 id="prHead"></h3>
+<p id="prBody"></p>
+<div class="faq" id="faq"></div>
+</div>
+</section>
+
+<section id="talk">
+<div class="contact">
+<div><p class="eyebrow">Let's talk</p><h2 id="talkTitle"></h2><p class="lede" id="talkLede"></p>
+<div class="links"><a class="btn primary" href="mailto:aditi.behera@outlook.com?subject=Penn%20State%20alum%20interested%20in%20Concur%20implementation%20roles">Email me</a><a class="btn" href="https://www.linkedin.com/in/aditi-behera-27bab8237" target="_blank" rel="noopener">LinkedIn</a><a class="btn" href="https://aditibehera.github.io/resume.pdf" target="_blank" rel="noopener">Resume (PDF)</a><a class="btn" href="https://github.com/aditibehera" target="_blank" rel="noopener">GitHub</a></div></div>
+<div class="card"><h3>Reach me directly</h3><p style="margin:0 0 6px">aditi.behera@outlook.com <button class="chip" data-copy="aditi.behera@outlook.com">Copy</button></p><p style="margin:0">+1 814-699-3926 <button class="chip" data-copy="+1 814-699-3926">Copy</button></p><p class="facts" style="margin-top:12px">Eastern time · happy to work around your schedule</p></div>
+</div>
+</section>
+<footer>Personal portfolio by Aditi Behera. Not affiliated with or endorsed by SAP Concur. Dashboard figures are invented demo data; Expenzing and Sweet Bites figures are approximate and mine. The intro is your browser's text-to-speech reading my own script. AI Aditi is a scripted assistant: every answer was written by me.</footer>
+</div>
+
+<button class="btn primary" id="botBtn">💬 Ask AI Aditi</button>
+<div id="bot" role="dialog" aria-label="Ask AI Aditi">
+<header><div><b>AI Aditi</b><small>Scripted assistant · answers written by Aditi</small></div><button class="x" id="botX" aria-label="Close">×</button></header>
+<div id="msgs"></div>
+<div id="sugg"></div>
+<form id="botForm"><input id="botIn" placeholder="Ask about my experience, this role, visa…" autocomplete="off"><button class="btn primary" type="submit">Send</button></form>
+</div>
+
+<script>
+const D = {"name": "SAP Concur", "badge": "For SAP Concur · Implementation & Customer teams", "headline": "I've implemented expense and AP software. Concur is where I want to do it next.", "sub": "At Expenzing, a Source-to-Pay SaaS company, I took enterprise clients from kickoff to go-live. Here's the proof, in about two minutes.", "intro": "Hi, I'm Aditi. I just finished my Master of Business Analytics at Penn State. Before that, I was a business analyst at Expenzing, a Source-to-Pay software company in Mumbai, where I ran client implementations for expense, procurement and accounts payable. I kept fifteen plus implementations moving at once, wrote the requirements, supported testing, and took clients live. I also helped automate invoice checks that saved about two hundred fifty thousand dollars a year. Concur is the category leader in exactly this work, so I built this page for you. Scroll down for a concept dashboard I designed for an implementation team, my stories, and my first ninety days. Thanks for listening.", "briefTitle": "Four things a Concur implementation role needs", "needs": [{"need": "Take customers live", "num": "15+", "lab": "concurrent implementations", "proof": "At Expenzing I ran 15+ enterprise implementations at once: BRDs, FRDs, user stories, UAT and Agile sprints, through go-live."}, {"need": "Know expense & AP workflows", "num": "35%", "lab": "less manual reconciliation", "proof": "Three-way-match exception flagging I set up with the product team cut manual reconciliation effort by about 35%."}, {"need": "Find what's slowing approvals", "num": "14.6%", "lab": "faster AP approval cycle", "proof": "At Expenzing the AP approval cycle got 14.6% faster through the approval-workflow work I was part of."}, {"need": "Report to leadership", "num": "50+", "lab": "accounts on one morning dashboard", "proof": "I built the CEO's morning dashboard covering 50+ client accounts."}], "dash": {"heading": "An implementation health board for Concur", "lede": "If I joined an implementation team, this is the view I'd want every Monday: are go-lives on time, and if not, why.", "name": "Implementation Health Board", "lineTitle": "Go-lives on schedule, last 12 weeks vs 90% target", "barTitle": "Why go-lives slipped · AI-tagged from project notes", "metric": "On-schedule go-lives", "unit": "%", "target": 90, "higherBetter": true, "yMin": 70, "yMax": 100, "kpi3": "Projects in flight", "kpi4": "Avg days kickoff → go-live", "filters": [{"name": "All", "start": 82, "end": 91, "noise": 5, "reasons": [["ERP / HR feed delays", 34], ["Policy rules reopened", 24], ["Customer UAT capacity", 19], ["Card feed setup", 13], ["Scope changes", 10]], "k3": "64", "k4": "74"}, {"name": "Enterprise", "start": 78, "end": 88, "noise": 6, "reasons": [["ERP / HR feed delays", 40], ["Customer UAT capacity", 22], ["Policy rules reopened", 18], ["Scope changes", 12], ["Card feed setup", 8]], "k3": "21", "k4": "96"}, {"name": "Mid-market", "start": 86, "end": 94, "noise": 4, "reasons": [["Policy rules reopened", 33], ["Card feed setup", 25], ["ERP / HR feed delays", 20], ["Customer UAT capacity", 14], ["Scope changes", 8]], "k3": "31", "k4": "58"}, {"name": "Partner-led", "start": 80, "end": 87, "noise": 6, "reasons": [["Customer UAT capacity", 30], ["ERP / HR feed delays", 28], ["Scope changes", 18], ["Policy rules reopened", 14], ["Card feed setup", 10]], "k3": "12", "k4": "81"}], "watch": [{"item": "Global manufacturer (EMEA rollout)", "signal": "HR feed failed validation twice", "st": "red", "owner": "Integration lead", "next": "Joint call with customer HRIS team Thursday", "f": 1}, {"item": "Healthcare network", "signal": "UAT pass rate 71% at week 2", "st": "amber", "owner": "Implementation consultant", "next": "Add two scripted test sessions", "f": 1}, {"item": "Regional retailer", "signal": "Expense policy reopened 3 times", "st": "amber", "owner": "Business process consultant", "next": "Policy workshop with finance + HR", "f": 2}, {"item": "SaaS scale-up", "signal": "Card feed live, on track", "st": "green", "owner": "Implementation consultant", "next": "Go-live readiness check", "f": 2}, {"item": "Engineering firm (partner)", "signal": "No status update in 9 days", "st": "red", "owner": "Partner manager", "next": "Escalate to partner delivery lead", "f": 3}, {"item": "University system (partner)", "signal": "Scope change request open", "st": "amber", "owner": "Partner manager", "next": "Change-order review", "f": 3}], "note": "Design note: the board puts things the team controls (UAT capacity, policy sign-off) next to the outcome (on-time go-live), and AI tags the reasons from project notes so nobody has to fill in another field."}, "stories": ["implementations", "automation", "approvals", "dashboard", "bakery", "ta"], "plan": {"title": "My first 90 days on a Concur implementation team", "lede": "Learn the method, earn trust on a live project, then improve one thing with data.", "phases": [{"when": "Days 1–30", "title": "Learn the Concur way", "items": ["Get certified on Concur Expense configuration", "Shadow two live implementations end to end", "Map where my Expenzing playbook differs from Concur's methodology"]}, {"when": "Days 31–60", "title": "Own real work", "items": ["Run requirements and UAT for one customer workstream", "Keep a log of every configuration step that gets reopened", "Build a simple weekly status view for my projects"]}, {"when": "Days 61–90", "title": "Improve one thing", "items": ["Bring the reopened-steps data to my manager", "Propose one fix, like a policy-design checklist for kickoff", "Measure it on the next two projects"]}]}, "pr": {"date": "Bellevue, WA · six months from now", "head": "Concur customers now go live faster, because policy decisions get made before configuration starts", "body": "A new pre-kickoff policy workshop and a shared health board cut the number of reopened configuration steps on new implementations, so finance and HR teams see value from Concur weeks sooner.", "faq": [{"q": "Why Aditi?", "a": "She has already done this job on the vendor side: 15+ concurrent expense and AP implementations at Expenzing, from requirements to go-live."}, {"q": "What's she still learning?", "a": "Concur's own configuration and methodology. She isn't certified yet and plans to be within her first month."}, {"q": "What does she do first?", "a": "Shadows live projects and logs where time goes before suggesting any change."}]}, "talk": {"title": "Let's talk about Concur's implementation team", "lede": "I'd love 15 minutes to hear how your team works. I can start right away."}, "tour": ["I'm Aditi, and this page is built for Concur's implementation and customer teams.", "These are the four things I think the role needs, each backed by a number from my work.", "This is a concept dashboard I designed for an implementation team, with demo data.", "Here's how I'd spend my first 90 days: learn the method, own real work, improve one thing."], "bot": {"why": "Concur is the leader in the exact work I did at Expenzing: expense, travel and AP software for enterprises. I've already been the person configuring approval chains and policy rules and taking clients live, so I'd ramp quickly and bring a vendor-side view of what slows implementations down.", "dash": "It's an Implementation Health Board: on-time go-lives versus a 90% target, the reasons projects slip (AI-tagged from project notes), and a watch list with owners. All demo data. Try the Enterprise and Partner-led filters.", "story": "My favorite is the stalled approvals one. Enterprise invoices kept stalling, and I traced it to a 10-invoice batch limit feeding seven approval layers. I took the evidence to IT and they shipped a workaround. It taught me to map the process before proposing a fix.", "gaps": "Honestly: I haven't configured Concur itself yet, and I'd aim to get certified in my first month. My SQL at production scale is also still growing; most of my deep SQL work so far is academic.", "first": "Month one: get certified and shadow two live implementations. Month two: own requirements and UAT for a workstream. Month three: use what I logged to propose and measure one improvement."}};
+const S = {"approvals": {"tag": "Root cause · Expenzing", "title": "Unblocking stalled invoice approvals", "num": "10 × 7", "lab": "a 10-invoice batch limit feeding 7 approval layers", "s": "Enterprise clients' invoices kept stalling in approval, and everyone had a different theory about why.", "a": "I traced the approval workflow end to end and found invoices moved in batches of 10, with every batch having to clear seven approval layers in order. I documented it and took the evidence to IT.", "r": "IT shipped a workaround. The bigger lesson for me: map the process before proposing a fix."}, "automation": {"tag": "Automation · Expenzing", "title": "Automating invoice checks", "num": "~$250K / yr", "lab": "saved, plus 35% less manual reconciliation", "s": "Finance teams were checking invoices against POs and receipts by hand, and reconciliation ate hours every cycle.", "a": "I worked with the product team to set up three-way-match rules inside Expenzing's platform, so only real exceptions were flagged for a person to review.", "r": "About $250K a year saved through automated invoice checks, and roughly 35% less manual reconciliation effort."}, "dashboard": {"tag": "Dashboards · Expenzing", "title": "A morning dashboard leaders actually opened", "num": "50+ accounts", "lab": "and ~$500K in risk exposure surfaced", "s": "Leadership had no single view of how client accounts were doing; status lived in emails and spreadsheets.", "a": "I built a morning dashboard in Excel and Power BI that covered 50+ client accounts, so the CEO could see issues before the day started.", "r": "The dashboard work surfaced about $500K in risk exposure that had been sitting in scattered reports."}, "implementations": {"tag": "Delivery · Expenzing", "title": "Running 15+ implementations at once", "num": "15+", "lab": "concurrent enterprise implementations", "s": "I was managing many enterprise client implementations at the same time, each with its own requirements and deadlines.", "a": "I wrote BRDs, FRDs and user stories, supported UAT, worked inside Agile sprints with the product team, and set up a daily Jira triage so nothing sat unowned.", "r": "15+ implementations kept moving in parallel, with direct client delivery through go-live."}, "bakery": {"tag": "Ownership · Sweet Bites", "title": "Five years running my own bakery", "num": "95%", "lab": "Excel demand-forecast accuracy", "s": "As founder of Sweet Bites, I owned everything: 500+ SKUs, 20+ suppliers, and the cash on the line every morning.", "a": "I built my own demand forecasting in Excel and used it to decide what to bake and what to order.", "r": "About 95% forecast accuracy, and five years of learning that a number only matters if someone acts on it."}, "alert": {"tag": "Analytics · case study", "title": "Fixing an alert that missed a spike", "num": "4 of 4", "lab": "spike weeks caught, no false alarms", "s": "In a case study I built on 240K synthetic orders, a standard 3-sigma alert caught only the first week of a cancellation spike and raised a false alarm elsewhere.", "a": "I kept known incidents out of the baseline, required a minimum move of 0.5 points, then split cancellations by reason and drilled into stores.", "r": "The new alert caught 4 of 4 spike weeks with no false alarms, and I traced the spike to 6 stores. Full write-up at aditibehera.github.io/instacart."}, "bikeshare": {"tag": "SQL · academic project", "title": "Chicago bike share demand", "num": "500K+", "lab": "trips queried in SQL", "s": "Where and when does bike demand outstrip supply across a city network?", "a": "I queried 500K+ trip records in SQL to find peak-demand stations and seasonal patterns, then built Tableau dashboards.", "r": "Rebalancing recommendations across 600+ stations."}, "classifier": {"tag": "Python · personal project", "title": "Invoice exception classifier", "num": "7 types", "lab": "of AP exceptions, sorted automatically", "s": "Can accounts-payable exceptions be routed to the right team without someone reading each one?", "a": "I built a Python NLP pipeline on 1,440 synthetic exception records, comparing four models with 5-fold cross-validation.", "r": "A working classifier with an inference script and documentation."}, "ta": {"tag": "Teaching · Penn State", "title": "Teaching Assistant at Smeal", "num": "60+", "lab": "students supported", "s": "As a Teaching Assistant at Penn State Smeal, I supported a class of 60+ students.", "a": "I helped students work through the course's analytics material, answering questions from people with very different backgrounds.", "r": "Practice explaining technical work in plain language, which is most of client-facing work."}};
+const $ = s => document.querySelector(s);
+const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+
+$('#badge').textContent = D.badge;
+$('#headline').textContent = D.headline;
+$('#sub').textContent = D.sub;
+$('#briefTitle').textContent = D.briefTitle;
+$('#dashTitle').textContent = D.dash.heading;
+$('#dashLede').textContent = D.dash.lede;
+$('#dashName').textContent = D.dash.name;
+$('#lineTitle').textContent = D.dash.lineTitle;
+$('#barTitle').textContent = D.dash.barTitle;
+$('#dashNote').textContent = D.dash.note;
+$('#planTitle').textContent = D.plan.title;
+$('#planLede').textContent = D.plan.lede;
+$('#prDate').textContent = D.pr.date;
+$('#prHead').textContent = D.pr.head;
+$('#prBody').textContent = D.pr.body;
+$('#talkTitle').textContent = D.talk.title;
+$('#talkLede').textContent = D.talk.lede;
+
+// brief
+$('#needs').innerHTML = D.needs.map(n => `<div class="card need" tabindex="0"><h3>${esc(n.need)}</h3><div class="num">${esc(n.num)}</div><div class="lab">${esc(n.lab)}</div><div class="proof">${esc(n.proof)}</div></div>`).join('');
+document.querySelectorAll('.need').forEach(el => { const t = () => el.classList.toggle('open'); el.onclick = t; el.onkeydown = e => { if (e.key === 'Enter') t(); }; });
+
+// stories
+const order = D.stories.map(k => S[k]).filter(Boolean);
+$('#storyGrid').innerHTML = order.map(s => `<div class="card story" tabindex="0"><div class="tag">${esc(s.tag)}</div><h3>${esc(s.title)}</h3><div class="res">${esc(s.num)}</div><div class="lab" style="font-size:13px;color:var(--muted)">${esc(s.lab)}</div><div class="star"><p><b>Situation.</b> ${esc(s.s)}</p><p><b>What I did.</b> ${esc(s.a)}</p><p><b>Result.</b> ${esc(s.r)}</p></div></div>`).join('');
+document.querySelectorAll('.story').forEach(el => { const t = () => el.classList.toggle('open'); el.onclick = t; el.onkeydown = e => { if (e.key === 'Enter') t(); }; });
+
+// plan
+$('#planGrid').innerHTML = D.plan.phases.map(p => `<div class="card"><b>${esc(p.when)}</b><h3>${esc(p.title)}</h3><ul>${p.items.map(i => `<li>${esc(i)}</li>`).join('')}</ul></div>`).join('');
+// faq
+$('#faq').innerHTML = D.pr.faq.map(f => `<details><summary>${esc(f.q)}</summary><p>${esc(f.a)}</p></details>`).join('');
+
+// dashboard
+function rng(seed){ let x = seed % 2147483647; if (x <= 0) x += 2147483646; return () => (x = x * 16807 % 2147483647) / 2147483647; }
+function series(f, i){ const r = rng(97 + i * 31); const out = []; for (let w = 0; w < 12; w++){ const t = w / 11; out.push(+(f.start + (f.end - f.start) * t + (r() - .5) * f.noise).toFixed(1)); } return out; }
+function drawLine(vals){
+  const dz = D.dash, W = 520, H = 220, L = 40, R = 12, T = 12, B = 28;
+  const lo = Math.min(dz.yMin, ...vals, dz.target), hi = Math.max(dz.yMax, ...vals, dz.target);
+  const x = i => L + i * (W - L - R) / 11, y = v => T + (hi - v) * (H - T - B) / (hi - lo);
+  let g = '';
+  for (let k = 0; k <= 4; k++){ const v = lo + (hi - lo) * k / 4; g += `<line x1="${L}" x2="${W-R}" y1="${y(v)}" y2="${y(v)}" stroke="var(--line)"/><text x="${L-6}" y="${y(v)+4}" text-anchor="end">${fmt(v)}</text>`; }
+  for (let i = 0; i < 12; i += 2) g += `<text x="${x(i)}" y="${H-8}" text-anchor="middle">W${i+1}</text>`;
+  g += `<line x1="${L}" x2="${W-R}" y1="${y(dz.target)}" y2="${y(dz.target)}" stroke="var(--muted)" stroke-dasharray="4 4"/><text x="${W-R}" y="${y(dz.target)-6}" text-anchor="end">target ${fmt(dz.target)}</text>`;
+  const pts = vals.map((v, i) => `${x(i)},${y(v)}`).join(' ');
+  g += `<polyline points="${pts}" fill="none" stroke="var(--ink)" stroke-width="2.5" stroke-linejoin="round"/>`;
+  vals.forEach((v, i) => { const ok = dz.higherBetter ? v >= dz.target : v <= dz.target; g += `<circle cx="${x(i)}" cy="${y(v)}" r="4" fill="${ok ? 'var(--ink)' : 'var(--bad)'}"><title>W${i+1}: ${fmt(v)}</title></circle>`; });
+  $('#line').innerHTML = g;
+}
+function fmt(v){ return (Math.round(v * 10) / 10) + (D.dash.unit || ''); }
+function drawBars(items){
+  const max = Math.max(...items.map(i => i[1])), H = 220, rowH = (H - 10) / items.length;
+  let g = '';
+  items.forEach(([lab, v], i) => { const y0 = 6 + i * rowH, w = (v / max) * 170; g += `<text x="0" y="${y0 + rowH/2 + 4}">${esc(lab)}</text><rect x="150" y="${y0 + rowH*0.2}" width="${w}" height="${rowH*0.6}" rx="4" fill="var(--ink)" opacity="${1 - i*0.12}"/><text x="${156 + w}" y="${y0 + rowH/2 + 4}" style="fill:var(--text)">${v}%</text>`; });
+  $('#bars').innerHTML = g;
+}
+function render(fi){
+  const f = D.dash.filters[fi], vals = series(f, fi), last = vals[11], first = vals[0];
+  drawLine(vals);
+  const tot = f.reasons.reduce((a, b) => a + b[1], 0);
+  drawBars(f.reasons.map(([l, v]) => [l, Math.round(v / tot * 100)]).sort((a, b) => b[1] - a[1]));
+  const hit = vals.filter(v => D.dash.higherBetter ? v >= D.dash.target : v <= D.dash.target).length;
+  const delta = last - first, good = D.dash.higherBetter ? delta >= 0 : delta <= 0;
+  $('#kpis').innerHTML = `<div class="kpi"><span>${esc(D.dash.metric)} (this week)</span><b>${fmt(last)}</b><em style="color:${good ? 'var(--good)' : 'var(--bad)'}">${delta >= 0 ? '▲' : '▼'} ${fmt(Math.abs(delta))} vs W1</em></div>
+  <div class="kpi"><span>Weeks on target</span><b>${hit} / 12</b><em style="color:var(--muted)">target ${fmt(D.dash.target)}</em></div>
+  <div class="kpi"><span>${esc(D.dash.kpi3)}</span><b>${esc(f.k3)}</b></div>
+  <div class="kpi"><span>${esc(D.dash.kpi4)}</span><b>${esc(f.k4)}</b></div>`;
+  const rows = D.dash.watch.filter(w => fi === 0 || w.f === fi);
+  $('#watch').innerHTML = rows.map(w => `<tr><td><b>${esc(w.item)}</b></td><td>${esc(w.signal)}</td><td><span class="st ${w.st}">${({red:'At risk',amber:'Watch',green:'On track'})[w.st]}</span></td><td>${esc(w.owner)}</td><td>${esc(w.next)}</td></tr>`).join('');
+  document.querySelectorAll('#filters .chip').forEach((c, i) => c.classList.toggle('on', i === fi));
+}
+$('#filters').innerHTML = D.dash.filters.map((f, i) => `<button class="chip">${esc(f.name)}</button>`).join('');
+document.querySelectorAll('#filters .chip').forEach((c, i) => c.onclick = () => render(i));
+render(0);
+
+// copy
+document.querySelectorAll('[data-copy]').forEach(b => b.onclick = () => { navigator.clipboard && navigator.clipboard.writeText(b.dataset.copy); const t = b.textContent; b.textContent = 'Copied'; setTimeout(() => b.textContent = t, 1200); });
+
+// intro narration (browser TTS reading my script) with live captions
+const playBtn = $('#play'), cap = $('#caption');
+let speaking = false;
+function stopTalk(){ speechSynthesis.cancel(); speaking = false; playBtn.textContent = '▶ Play my intro'; }
+playBtn.onclick = () => {
+  if (!('speechSynthesis' in window)) { cap.classList.add('on'); cap.textContent = D.intro; return; }
+  if (speaking) { stopTalk(); return; }
+  const sentences = D.intro.match(/[^.!?]+[.!?]+/g) || [D.intro];
+  let i = 0; speaking = true; playBtn.textContent = '■ Stop'; cap.classList.add('on');
+  const voices = speechSynthesis.getVoices();
+  const v = voices.find(v => /en-(IN|US)/.test(v.lang) && /female|samantha|aria|jenny|zira|veena|google us english/i.test(v.name)) || voices.find(v => v.lang.startsWith('en'));
+  const next = () => {
+    if (!speaking || i >= sentences.length) { stopTalk(); return; }
+    cap.innerHTML = sentences.map((s, k) => k === i ? `<span class="now">${esc(s)}</span>` : esc(s)).join('');
+    const u = new SpeechSynthesisUtterance(sentences[i].trim()); if (v) u.voice = v; u.rate = 1.0;
+    u.onend = () => { i++; next(); }; u.onerror = () => stopTalk();
+    speechSynthesis.speak(u);
+  };
+  next();
+};
+
+// AI Aditi (scripted)
+const bot = $('#bot'), msgs = $('#msgs');
+function say(t, who = 'b'){ const m = document.createElement('div'); m.className = 'm ' + who; m.innerHTML = who === 'b' ? t : esc(t); msgs.appendChild(m); msgs.scrollTop = msgs.scrollHeight; }
+function setSugg(list){ $('#sugg').innerHTML = list.map(s => `<button class="chip">${esc(s)}</button>`).join(''); document.querySelectorAll('#sugg .chip').forEach(c => c.onclick = () => ask(c.textContent)); }
+const defaultSugg = ['Walk me through this page', `Why ${D.name}?`, 'Show me the dashboard', 'Your best story?', "What are you still learning?", 'Visa status?'];
+function openBot(){ bot.classList.add('on'); if (!msgs.children.length){ say(`Hi, I'm AI Aditi. I can walk you through this page or answer questions about my experience. Every answer here was written by me, Aditi.`); setSugg(defaultSugg); } $('#botIn').focus(); }
+$('#botBtn').onclick = () => bot.classList.contains('on') ? bot.classList.remove('on') : openBot();
+$('#askHero').onclick = openBot; $('#botX').onclick = () => bot.classList.remove('on');
+function flash(id){ const el = document.getElementById(id); if (!el) return; el.scrollIntoView({behavior:'smooth', block:'start'}); el.classList.add('hl'); setTimeout(() => el.classList.remove('hl'), 2200); }
+const tour = [
+  ['hero', `Start here. ${D.tour[0]} Hit "Play my intro" if you'd like to hear it from me in about a minute.`],
+  ['brief', `${D.tour[1]} Tap any card to see the proof behind the number.`],
+  ['dashboard', `${D.tour[2]} Try the filter chips at the top right; the chart, reasons and watch list all change.`],
+  ['stories', `These are real stories from Expenzing and my bakery. Each card opens into situation, action and result.`],
+  ['plan', D.tour[3]],
+  ['pr', `This is the outcome I'd want to help ${D.name} announce, written first, with the FAQ underneath.`],
+  ['talk', `That's the tour. Email, phone, LinkedIn and my resume are all here. I can start right away.`]
+];
+let step = -1;
+function tourNext(){ step++; if (step >= tour.length){ step = -1; setSugg(defaultSugg); return; } const [id, t] = tour[step]; flash(id); say(t); setSugg(step < tour.length - 1 ? ['Next →', 'Stop the tour'] : defaultSugg); if (step === tour.length - 1) step = -1; }
+const KB = [
+  [/walk me|tour|guide|show me around/i, () => { step = -1; tourNext(); return null; }],
+  [/^next/i, () => { tourNext(); return null; }],
+  [/stop the tour/i, () => { step = -1; setSugg(defaultSugg); return 'No problem. Ask me anything else.'; }],
+  [/why (sap concur|concur|sap)|why .*(here|you|this company)|\bfit\b|good match/i, () => D.bot.why],
+  [/dashboard|chart|demo|data/i, () => { flash('dashboard'); return D.bot.dash; }],
+  [/best story|story|example|star|achiev|proud/i, () => { flash('stories'); return D.bot.story; }],
+  [/learn|weak|gap|improve|missing/i, () => D.bot.gaps],
+  [/visa|opt|sponsor|authori|h-?1b|work permit/i, () => `I'm on STEM OPT, so I can work in the US now without sponsorship. I can start right away and I'm open to relocating anywhere in the US, or remote.`],
+  [/first|90|plan|day one|onboard/i, () => { flash('plan'); return D.bot.first; }],
+  [/expenzing|last job|experience|background|previous/i, () => `I was a Business Analyst and Product Executive at Expenzing, a Source-to-Pay SaaS company in Mumbai, from Feb to July 2025. I ran client implementations (15+ at once), wrote BRDs, FRDs and user stories, supported UAT, and worked on AP automation: about $250K a year saved, a 14.6% faster approval cycle, and 35% less reconciliation effort.`],
+  [/bakery|sweet bites|business owner|founder/i, () => `I ran Sweet Bites, my own retail bakery, for five years: 500+ SKUs, 20+ suppliers, and Excel demand forecasting at about 95% accuracy. It's where I learned that a forecast is only useful if someone acts on it the next morning.`],
+  [/sql|python|tableau|power ?bi|excel|tool|skill|tech/i, () => `Day to day: Excel (Power Query, VBA), Power BI and Tableau, SQL and Python. I also use Claude, ChatGPT and Copilot daily. My deepest SQL work so far is academic, like querying 500K+ bike-share trips, so I'm honest that SQL at production scale is where I'm still growing.`],
+  [/school|penn state|degree|education|gpa|mban/i, () => `Penn State Smeal, Master of Business Analytics, August 2026 (GPA 3.76) with a Graduate Certificate in Management Consulting. I was also a Teaching Assistant at Smeal. Before that: an MBA in Business Analytics from ITM and a B.Tech in Computer Science.`],
+  [/resume|cv/i, () => `Here's my resume: <a href="https://aditibehera.github.io/resume.pdf" target="_blank" rel="noopener">resume.pdf</a>`],
+  [/linkedin/i, () => `Here's my LinkedIn: <a href="https://www.linkedin.com/in/aditi-behera-27bab8237" target="_blank" rel="noopener">open profile</a>`],
+  [/contact|email|phone|reach|call|talk|chat|zoom/i, () => { flash('talk'); return `Email aditi.behera@outlook.com or call +1 814-699-3926. I'd love a 15-minute Zoom.`; }],
+  [/relocat|remote|location|where/i, () => `Open to relocating anywhere in the US, and happy with onsite, hybrid or remote.`],
+  [/salary|pay|comp/i, () => `I'd rather learn about the role and level first. I'm flexible and happy to talk about it once there's a fit.`],
+  [/^(hi|hello|hey)\b/i, () => `Hi! Want the two-minute tour, or do you have a question?`]
+];
+function ask(q){
+  say(q, 'u');
+  const hit = KB.find(([rx]) => rx.test(q));
+  setTimeout(() => {
+    if (!hit){ say(`I don't have a written answer for that one. Ask me about my experience, the dashboard, or why ${D.name}, or reach the real me at <a href="mailto:aditi.behera@outlook.com">aditi.behera@outlook.com</a>.`); setSugg(defaultSugg); return; }
+    const a = hit[1](); if (a){ say(a); if (step === -1) setSugg(defaultSugg); }
+  }, 350);
+}
+$('#botForm').onsubmit = e => { e.preventDefault(); const q = $('#botIn').value.trim(); if (q){ ask(q); $('#botIn').value = ''; } };
+</script>
+</body>
+</html>
