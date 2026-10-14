@@ -1,0 +1,432 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Aditi Behera for Gartner Conferences</title>
+<meta name="description" content="Aditi Behera — Planning & Performance Business Analyst, Gartner Conferences (Req 113018).">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#002856; --navy-2:#0a3a73; --blue:#1f6feb; --sky:#e8f1ff; --teal:#0f9d8a; --amber:#d9822b; --red:#c8423b;
+  --bg:#f6f8fb; --card:#ffffff; --ink:#0f1b2d; --muted:#5a6b82; --line:#dde4ee; --chip:#eef3fa;
+  --shadow:0 1px 2px rgba(15,27,45,.06),0 8px 24px rgba(15,27,45,.06);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --navy:#0b1f3d; --navy-2:#123160; --blue:#5b9bff; --sky:#13284a; --teal:#2fc4ae; --amber:#f0a557; --red:#ef6b63;
+    --bg:#0a1220; --card:#111c2e; --ink:#e7eef8; --muted:#97a8c0; --line:#22324b; --chip:#18263d;
+    --shadow:0 1px 2px rgba(0,0,0,.3),0 8px 24px rgba(0,0,0,.25);
+  }
+}
+:root[data-theme="dark"]{
+  --navy:#0b1f3d; --navy-2:#123160; --blue:#5b9bff; --sky:#13284a; --teal:#2fc4ae; --amber:#f0a557; --red:#ef6b63;
+  --bg:#0a1220; --card:#111c2e; --ink:#e7eef8; --muted:#97a8c0; --line:#22324b; --chip:#18263d;
+  --shadow:0 1px 2px rgba(0,0,0,.3),0 8px 24px rgba(0,0,0,.25);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.6 Inter,system-ui,-apple-system,Segoe UI,Roboto,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:var(--blue);text-decoration:none} a:hover{text-decoration:underline}
+.wrap{max-width:1120px;margin:0 auto;padding:0 16px}
+nav{position:sticky;top:0;z-index:30;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;gap:18px;height:56px}
+nav .me{font-weight:800;letter-spacing:-.01em}
+nav .links{display:flex;gap:16px;margin-left:auto;font-size:14px;overflow-x:auto;scrollbar-width:none}
+nav .links a{color:var(--muted);white-space:nowrap} nav .links a:hover{color:var(--ink);text-decoration:none}
+/* hero */
+.hero{background:linear-gradient(135deg,var(--navy) 0%,var(--navy-2) 60%,#134a8e 100%);color:#fff;padding:56px 0 64px}
+.hero .tag{display:inline-flex;gap:8px;align-items:center;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);padding:4px 12px;border-radius:999px;font-size:13px}
+.hero h1{font-size:clamp(30px,5vw,48px);line-height:1.1;margin:18px 0 12px;letter-spacing:-.02em;font-weight:800}
+.hero p.lead{font-size:17px;max-width:680px;color:#d6e3f7;margin:0 0 24px}
+.btns{display:flex;flex-wrap:wrap;gap:10px}
+.btn{display:inline-flex;align-items:center;gap:8px;border-radius:10px;padding:10px 16px;font-weight:600;font-size:14px;border:1px solid transparent;cursor:pointer;font-family:inherit}
+.btn.primary{background:#fff;color:var(--navy)} .btn.ghost{background:transparent;color:#fff;border-color:rgba(255,255,255,.4)}
+.btn:hover{text-decoration:none;filter:brightness(.97)}
+.caption{margin-top:18px;min-height:48px;max-width:720px;background:rgba(0,0,0,.25);border-radius:10px;padding:10px 14px;font-size:14px;color:#eaf2ff;display:none}
+.caption.on{display:block}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:36px}
+.stat{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);border-radius:12px;padding:14px}
+.stat b{display:block;font-size:24px;font-weight:800}
+.stat span{font-size:13px;color:#c7d7ee}
+/* sections */
+section{padding:56px 0}
+h2{font-size:26px;letter-spacing:-.015em;margin:0 0 6px}
+.sub{color:var(--muted);margin:0 0 24px;max-width:720px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow)}
+/* fit table */
+.fit{width:100%;border-collapse:separate;border-spacing:0;overflow:hidden}
+.fit th,.fit td{padding:12px 16px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
+.fit th{font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);background:var(--chip)}
+.fit tr:last-child td{border-bottom:none}
+.pill{display:inline-block;font-size:12px;font-weight:600;padding:2px 9px;border-radius:999px;white-space:nowrap}
+.pill.ok{background:color-mix(in srgb,var(--teal) 16%,transparent);color:var(--teal)}
+.pill.gap{background:color-mix(in srgb,var(--amber) 18%,transparent);color:var(--amber)}
+/* dashboard */
+.dash{padding:18px}
+.dash-head{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between;margin-bottom:14px}
+.demo{font-size:12px;font-weight:600;color:var(--amber);background:color-mix(in srgb,var(--amber) 14%,transparent);padding:3px 10px;border-radius:999px}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{border:1px solid var(--line);background:var(--chip);color:var(--ink);border-radius:999px;padding:5px 12px;font-size:13px;cursor:pointer;font-family:inherit}
+.chip.on{background:var(--blue);border-color:var(--blue);color:#fff}
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:14px}
+.kpi{border:1px solid var(--line);border-radius:12px;padding:12px}
+.kpi .l{font-size:12px;color:var(--muted)} .kpi .v{font-size:22px;font-weight:800;margin-top:2px}
+.kpi .d{font-size:12px;font-weight:600}
+.up{color:var(--teal)} .down{color:var(--red)}
+.grid2{display:grid;grid-template-columns:1.4fr 1fr;gap:14px}
+.panel{border:1px solid var(--line);border-radius:12px;padding:14px;min-width:0}
+.panel h4{margin:0 0 4px;font-size:14px} .panel .hint{font-size:12px;color:var(--muted);margin:0 0 8px}
+svg text{fill:var(--muted);font-size:11px;font-family:Inter,sans-serif}
+.legend{display:flex;gap:14px;font-size:12px;color:var(--muted);margin-top:4px}
+.legend i{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:5px;vertical-align:-1px}
+.scen{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:14px}
+.slider{margin:10px 0}
+.slider label{display:flex;justify-content:space-between;font-size:13px}
+.slider input{width:100%;accent-color:var(--blue)}
+.out{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.out div{background:var(--chip);border-radius:10px;padding:10px}
+.out b{display:block;font-size:20px}
+.out span{font-size:12px;color:var(--muted)}
+.rc{font-size:13px}
+.rc .row{display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px dashed var(--line)}
+.rc .row:last-child{border-bottom:none}
+.bar-btn{cursor:pointer}
+/* values */
+.vals{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:14px}
+.val{padding:18px}
+.val .vh{display:flex;gap:10px;align-items:center;margin-bottom:6px}
+.val .ic{width:34px;height:34px;border-radius:9px;display:grid;place-items:center;background:var(--sky);color:var(--blue);font-weight:800}
+.val h3{margin:0;font-size:16px}
+.val p{margin:6px 0;color:var(--muted);font-size:14px}
+details{margin-top:8px;border-top:1px solid var(--line);padding-top:8px}
+summary{cursor:pointer;font-weight:600;font-size:14px;color:var(--blue)}
+.star{font-size:14px;margin-top:8px}
+.star div{margin:4px 0} .star b{color:var(--ink)}
+/* plan */
+.plan{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.phase{padding:18px}
+.phase .n{font-size:12px;font-weight:700;color:var(--blue);text-transform:uppercase;letter-spacing:.08em}
+.phase h3{margin:4px 0 8px;font-size:17px}
+.phase ul{margin:0;padding-left:18px;color:var(--muted);font-size:14px}
+.phase li{margin:5px 0}
+/* about */
+.about{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.about .card{padding:18px}
+.about h3{margin:0 0 8px;font-size:16px}
+.about ul{margin:0;padding-left:18px;font-size:14px;color:var(--muted)}
+.about li{margin:4px 0}
+footer{padding:32px 0 96px;color:var(--muted);font-size:13px;border-top:1px solid var(--line)}
+/* bot */
+.fab{position:fixed;right:18px;bottom:18px;z-index:50;background:var(--navy);color:#fff;border:none;border-radius:999px;padding:12px 18px;font-weight:700;font-family:inherit;box-shadow:0 8px 24px rgba(0,40,86,.35);cursor:pointer;display:flex;gap:8px;align-items:center}
+.fab .dot{width:8px;height:8px;border-radius:50%;background:#3ee0a6}
+.bot{position:fixed;right:18px;bottom:76px;z-index:50;width:min(380px,calc(100vw - 32px));height:min(540px,calc(100vh - 110px));display:none;flex-direction:column;overflow:hidden}
+.bot.on{display:flex}
+.bot-h{background:var(--navy);color:#fff;padding:12px 14px;display:flex;align-items:center;gap:10px}
+.bot-h .av{width:32px;height:32px;border-radius:50%;background:#fff;color:var(--navy);display:grid;place-items:center;font-weight:800}
+.bot-h small{display:block;color:#bcd0ec;font-size:11px}
+.bot-h button{margin-left:auto;background:none;border:none;color:#fff;font-size:20px;cursor:pointer}
+.msgs{flex:1;overflow-y:auto;padding:12px;display:flex;flex-direction:column;gap:8px;background:var(--bg)}
+.m{max-width:86%;padding:9px 12px;border-radius:12px;font-size:14px;white-space:pre-line}
+.m.b{background:var(--card);border:1px solid var(--line);align-self:flex-start}
+.m.u{background:var(--blue);color:#fff;align-self:flex-end}
+.sugg{display:flex;flex-wrap:wrap;gap:6px;padding:8px 12px;border-top:1px solid var(--line);background:var(--card)}
+.sugg button{font-size:12px}
+.bot form{display:flex;gap:6px;padding:10px;border-top:1px solid var(--line);background:var(--card)}
+.bot input{flex:1;border:1px solid var(--line);border-radius:10px;padding:9px 10px;background:var(--bg);color:var(--ink);font-family:inherit;font-size:14px}
+.bot form button{background:var(--blue);color:#fff;border:none;border-radius:10px;padding:0 14px;font-weight:600;cursor:pointer;font-family:inherit}
+@media (max-width:860px){
+  .stats,.kpis{grid-template-columns:repeat(2,1fr)}
+  .grid2,.scen,.about,.plan{grid-template-columns:1fr}
+  .fit .hide-sm{display:none}
+}
+</style>
+</head>
+<body>
+<nav><div class="wrap"><span class="me">Aditi Behera</span>
+<div class="links"><a href="#fit">Fit</a><a href="#dash">Dashboard</a><a href="#values">Values</a><a href="#plan">90 days</a><a href="#about">About</a></div></div></nav>
+
+<header class="hero"><div class="wrap">
+  <span class="tag">Planning &amp; Performance Business Analyst · Gartner Conferences · Req 113018 · Irving, TX</span>
+  <h1>I turn messy operational data into the numbers leaders plan with.</h1>
+  <p class="lead">I'm Aditi, a Penn State Master of Business Analytics graduate and former business analyst at Expenzing, a Source-to-Pay SaaS company. I built the reporting a CEO used across 50+ client accounts. Here's how that work lines up with Planning &amp; Performance.</p>
+  <div class="btns">
+    <button class="btn primary" id="play">▶ Hear my 60-second intro</button>
+    <button class="btn ghost" id="openBot2">Ask AI Aditi</button>
+    <a class="btn ghost" href="https://www.linkedin.com/in/aditi-behera" target="_blank" rel="noopener">LinkedIn</a>
+    <a class="btn ghost" href="https://aditibehera.github.io/portfolio.html" target="_blank" rel="noopener">Full portfolio</a>
+  </div>
+  <div class="caption" id="cap" aria-live="polite"></div>
+  <div class="stats">
+    <div class="stat"><b>15+</b><span>concurrent client implementations</span></div>
+    <div class="stat"><b>50+</b><span>accounts on CEO dashboards</span></div>
+    <div class="stat"><b>14.6%</b><span>faster AP approval cycle</span></div>
+    <div class="stat"><b>35%</b><span>less reconciliation effort</span></div>
+  </div>
+</div></header>
+
+<main>
+<section id="fit"><div class="wrap">
+  <h2>How I map to the role</h2>
+  <p class="sub">The requirements from the posting, next to what I can show. Including the one place I'm still growing.</p>
+  <div class="card"><table class="fit">
+    <tr><th>The role asks for</th><th>What I bring</th><th class="hide-sm">Match</th></tr>
+    <tr><td>Weekly and monthly KPI reporting; executive-ready materials</td><td>Built the dashboards Expenzing's CEO used to track performance across 50+ client accounts.</td><td class="hide-sm"><span class="pill ok">Strong</span></td></tr>
+    <tr><td>Advanced Excel, PowerPoint and Power BI, incl. data modeling</td><td>Power BI and Excel are my daily tools; SQL (Chicago Bike Share project) and Python (bank risk analytics) on top.</td><td class="hide-sm"><span class="pill ok">Strong</span></td></tr>
+    <tr><td>Root-cause analysis of variances; recommend corrective actions</td><td>Traced a slow AP approval flow to a 10-invoice batch limit across a 7-layer approval chain, escalated it, and IT shipped a workaround.</td><td class="hide-sm"><span class="pill ok">Strong</span></td></tr>
+    <tr><td>Turn business questions into analytical frameworks</td><td>Wrote BRDs, FRDs and user stories for client implementations; ran UAT inside Agile/Scrum.</td><td class="hide-sm"><span class="pill ok">Strong</span></td></tr>
+    <tr><td>Use AI tools to boost productivity and insight</td><td>I use Claude, ChatGPT and Copilot daily for analysis drafts, query checks and documentation. This page's assistant is part of that.</td><td class="hide-sm"><span class="pill ok">Strong</span></td></tr>
+    <tr><td>Budgeting, forecasting and scenario models</td><td>Not my core work yet. I ran my own bakery business, Sweet Bites, for five years, and the demo below shows how I'd approach a driver-based model for a conference portfolio.</td><td class="hide-sm"><span class="pill gap">Growing</span></td></tr>
+    <tr><td>2+ years in business analysis, finance or analytics</td><td>5 months as a full-time business analyst, plus five years running a business and a Master's in Business Analytics. I ramp fast and I'm upfront about it.</td><td class="hide-sm"><span class="pill gap">Growing</span></td></tr>
+  </table></div>
+</div></section>
+
+<section id="dash" style="padding-top:8px"><div class="wrap">
+  <h2>Conference Portfolio Pulse</h2>
+  <p class="sub">A small model of the work this role does: forecast vs. actual, variance by event, root cause, and a scenario planner. Built with made-up numbers. It does not use or represent Gartner data.</p>
+  <div class="card dash">
+    <div class="dash-head">
+      <div class="chips" id="regionChips"></div>
+      <span class="demo">Demo data</span>
+    </div>
+    <div class="kpis" id="kpis"></div>
+    <div class="grid2">
+      <div class="panel"><h4>Registrations: forecast vs. actual</h4><p class="hint">Monthly, selected region</p><div id="lineChart"></div>
+        <div class="legend"><span><i style="background:var(--blue)"></i>Actual</span><span><i style="background:var(--muted);opacity:.5"></i>Forecast</span></div></div>
+      <div class="panel"><h4>Revenue variance to plan by event</h4><p class="hint">Click a bar to see what drove it</p><div id="barChart"></div></div>
+    </div>
+    <div class="scen">
+      <div class="panel"><h4 id="rcTitle">Root cause</h4><p class="hint">Variance split into volume, price and sponsorship</p><div class="rc" id="rc"></div></div>
+      <div class="panel"><h4>Scenario planner: next quarter</h4><p class="hint">Move the drivers and watch revenue and margin</p>
+        <div class="slider"><label><span>Attendance</span><b id="sa">0%</b></label><input type="range" id="att" min="-20" max="20" value="0"></div>
+        <div class="slider"><label><span>Average ticket price</span><b id="sp">0%</b></label><input type="range" id="price" min="-15" max="15" value="0"></div>
+        <div class="slider"><label><span>Sponsorship revenue</span><b id="ss">0%</b></label><input type="range" id="spon" min="-30" max="30" value="0"></div>
+        <div class="out"><div><span>Projected revenue</span><b id="orev">–</b></div><div><span>Projected margin</span><b id="omar">–</b></div></div>
+      </div>
+    </div>
+  </div>
+</div></section>
+
+<section id="values"><div class="wrap">
+  <h2>Gartner's values, in my own work</h2>
+  <p class="sub">Gartner names integrity, objectivity, a no-limits mindset, collaboration and results among its values. Here's where each one already shows up in what I've done.</p>
+  <div class="vals" id="vals"></div>
+</div></section>
+
+<section id="plan" style="padding-top:8px"><div class="wrap">
+  <h2>My first 90 days</h2>
+  <p class="sub">How I'd ramp on Planning &amp; Performance without slowing the team down.</p>
+  <div class="plan">
+    <div class="card phase"><div class="n">Days 1–30</div><h3>Learn the numbers</h3><ul>
+      <li>Learn the Conferences portfolio, the KPI definitions and where every number comes from</li>
+      <li>Shadow the monthly forecast and the weekly reporting cycle end to end</li>
+      <li>Take over one recurring report and deliver it on time, every time</li></ul></div>
+    <div class="card phase"><div class="n">Days 31–60</div><h3>Own a slice</h3><ul>
+      <li>Own variance commentary for a set of events: what moved and why</li>
+      <li>Find one manual step in reporting and automate it in Power BI or Excel</li>
+      <li>Check data quality issues with the owners, not around them</li></ul></div>
+    <div class="card phase"><div class="n">Days 61–90</div><h3>Add insight</h3><ul>
+      <li>Build a driver-based scenario view for budget season</li>
+      <li>Bring one recommendation to a business review, backed by the data</li>
+      <li>Use AI tools to cut turnaround on ad hoc requests, with checks on every number</li></ul></div>
+  </div>
+</div></section>
+
+<section id="about" style="padding-top:8px"><div class="wrap">
+  <h2>About me</h2>
+  <p class="sub">Short version below. AI Aditi in the corner can answer the rest.</p>
+  <div class="about">
+    <div class="card"><h3>Education</h3><ul>
+      <li>Master of Business Analytics, Penn State Smeal (Aug 2026), GPA 3.76, Graduate Certificate in Management Consulting</li>
+      <li>MBA, Business Analytics, ITM Business School, Navi Mumbai (2025)</li>
+      <li>B.Tech, Computer Science &amp; Engineering, Sandip University (2023)</li>
+      <li>Teaching Assistant at Smeal; Student Leadership Board</li></ul></div>
+    <div class="card"><h3>Experience</h3><ul>
+      <li>Business Analyst &amp; Product Executive, Expenzing, Mumbai (Feb–Jul 2025): client implementations, AP automation, CEO reporting</li>
+      <li>Founder, Sweet Bites bakery (5 years): ran the business end to end</li>
+      <li>Work authorization: on STEM OPT, authorized to work in the US with no sponsorship needed; ready to work hybrid in Irving</li></ul></div>
+  </div>
+</div></section>
+</main>
+
+<footer><div class="wrap">
+  Built by Aditi Behera for her application to Req 113018. Not affiliated with or endorsed by Gartner. Dashboard figures are invented for demonstration. AI Aditi is a scripted assistant that answers from facts Aditi wrote; it is not a live AI model.
+</div></footer>
+
+<button class="fab" id="fab"><span class="dot"></span>Ask AI Aditi</button>
+<div class="bot card" id="bot" role="dialog" aria-label="AI Aditi">
+  <div class="bot-h"><div class="av">A</div><div>AI Aditi<small>Scripted assistant · answers from Aditi's own facts</small></div><button id="closeBot" aria-label="Close">×</button></div>
+  <div class="msgs" id="msgs"></div>
+  <div class="sugg" id="sugg"></div>
+  <form id="f"><input id="q" placeholder="Ask about fit, forecasting, visa, stories…" autocomplete="off"><button>Send</button></form>
+</div>
+
+<script>
+/* ---------- intro narration ---------- */
+const INTRO=[
+ "Hi, I'm Aditi Behera. I finished Penn State's Master of Business Analytics in August, and I'm applying to be a Planning and Performance Business Analyst on the Gartner Conferences team.",
+ "Before Penn State, I was a business analyst at Expenzing, a Source-to-Pay software company. I ran more than fifteen client implementations at once, and I built the dashboards our CEO used across more than fifty client accounts.",
+ "My favorite part of that job was finding why a number moved. One example: approvals were slow, and I traced it to a ten-invoice batch limit across a seven-layer approval chain. I escalated it, and our IT team shipped a workaround.",
+ "I also ran my own bakery business for five years, so making real trade-offs with real money isn't abstract to me.",
+ "On this page you'll find a small demo of how I'd model a conference portfolio, how my work lines up with Gartner's values, and my first ninety days. Thanks for listening, and feel free to ask AI Aditi anything."
+];
+const playBtn=document.getElementById('play'),cap=document.getElementById('cap');
+let speaking=false;
+function stopTalk(){try{speechSynthesis.cancel()}catch(e){} speaking=false;playBtn.textContent='▶ Hear my 60-second intro';}
+playBtn.onclick=()=>{
+  if(!('speechSynthesis' in window)){cap.classList.add('on');cap.textContent=INTRO.join(' ');return;}
+  if(speaking){stopTalk();cap.classList.remove('on');return;}
+  speaking=true;playBtn.textContent='■ Stop';cap.classList.add('on');
+  const voices=speechSynthesis.getVoices();
+  const v=voices.find(x=>/en-(US|IN)/i.test(x.lang)&&/female|samantha|zira|aria|jenny|google us english/i.test(x.name))||voices.find(x=>/^en/i.test(x.lang));
+  let i=0;
+  const next=()=>{ if(!speaking)return; if(i>=INTRO.length){stopTalk();return;}
+    const u=new SpeechSynthesisUtterance(INTRO[i]); if(v)u.voice=v; u.rate=1; cap.textContent=INTRO[i];
+    u.onend=()=>{i++;next();}; u.onerror=()=>{i++;next();}; speechSynthesis.speak(u); };
+  next();
+};
+
+/* ---------- demo data ---------- */
+const MONTHS=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep'];
+const REGIONS={
+ 'All regions':{f:[820,900,1180,1300,1420,1500,1350,1250,1600],a:[800,930,1120,1340,1390,1560,1290,1210,1660]},
+ 'North America':{f:[420,460,610,680,740,790,700,650,840],a:[410,480,590,700,720,820,660,630,880]},
+ 'EMEA':{f:[280,300,390,420,460,480,440,400,510],a:[270,310,360,430,450,500,420,380,520]},
+ 'APAC':{f:[120,140,180,200,220,230,210,200,250],a:[120,140,170,210,220,240,210,200,260]}
+};
+const EVENTS=[
+ {n:'CIO Summit',var:+6.2,vol:+4.1,price:+0.6,spon:+1.5},
+ {n:'Supply Chain Forum',var:-4.8,vol:-3.9,price:+0.4,spon:-1.3},
+ {n:'Data & Analytics Expo',var:+3.1,vol:+1.2,price:+1.4,spon:+0.5},
+ {n:'Security Week',var:-2.2,vol:+0.8,price:-1.9,spon:-1.1},
+ {n:'Finance Leaders Day',var:+1.0,vol:-0.6,price:+0.9,spon:+0.7},
+ {n:'HR Futures',var:-1.4,vol:-1.8,price:+0.2,spon:+0.2}
+];
+const BASE={rev:48.0,cost:31.2,ticketShare:.62,sponShare:.28,otherShare:.10};
+let region='All regions',picked=0;
+
+const css=v=>getComputedStyle(document.documentElement).getPropertyValue(v).trim();
+const fmtM=x=>'$'+x.toFixed(1)+'M';
+
+function chips(){
+  const c=document.getElementById('regionChips');c.innerHTML='';
+  Object.keys(REGIONS).forEach(r=>{const b=document.createElement('button');b.className='chip'+(r===region?' on':'');b.textContent=r;b.onclick=()=>{region=r;render()};c.appendChild(b);});
+}
+function kpis(){
+  const d=REGIONS[region],fa=d.f.reduce((a,b)=>a+b),aa=d.a.reduce((a,b)=>a+b);
+  const regVar=(aa/fa-1)*100,share=aa/REGIONS['All regions'].a.reduce((a,b)=>a+b);
+  const rev=BASE.rev*share*(1+regVar/100*.8),plan=BASE.rev*share;
+  const mape=d.f.reduce((s,f,i)=>s+Math.abs(d.a[i]-f)/f,0)/d.f.length*100;
+  const cpa=(BASE.cost*share*1e6)/(aa*1.0);
+  const items=[
+    ['Registrations YTD',aa.toLocaleString(),(regVar>=0?'+':'')+regVar.toFixed(1)+'% vs forecast',regVar>=0],
+    ['Revenue YTD',fmtM(rev),((rev/plan-1)*100>=0?'+':'')+((rev/plan-1)*100).toFixed(1)+'% vs plan',rev>=plan],
+    ['Forecast error (MAPE)',mape.toFixed(1)+'%',mape<4?'Within 4% target':'Above 4% target',mape<4],
+    ['Cost per attendee','$'+Math.round(cpa).toLocaleString(),'Demo benchmark $'+Math.round(cpa*1.03).toLocaleString(),true]
+  ];
+  document.getElementById('kpis').innerHTML=items.map(k=>`<div class="kpi"><div class="l">${k[0]}</div><div class="v">${k[1]}</div><div class="d ${k[3]?'up':'down'}">${k[2]}</div></div>`).join('');
+}
+function line(){
+  const el=document.getElementById('lineChart'),W=Math.max(el.clientWidth,280),H=200,p={l:36,r:10,t:10,b:24};
+  const d=REGIONS[region],all=d.f.concat(d.a),mx=Math.max(...all)*1.08,mn=Math.min(...all)*.85;
+  const x=i=>p.l+i*(W-p.l-p.r)/(MONTHS.length-1),y=v=>p.t+(1-(v-mn)/(mx-mn))*(H-p.t-p.b);
+  const path=a=>a.map((v,i)=>(i?'L':'M')+x(i).toFixed(1)+' '+y(v).toFixed(1)).join(' ');
+  let g='';for(let k=0;k<=3;k++){const v=mn+(mx-mn)*k/3;g+=`<line x1="${p.l}" x2="${W-p.r}" y1="${y(v)}" y2="${y(v)}" stroke="${css('--line')}"/><text x="${p.l-6}" y="${y(v)+4}" text-anchor="end">${Math.round(v)}</text>`;}
+  const lab=MONTHS.map((m,i)=>`<text x="${x(i)}" y="${H-6}" text-anchor="middle">${m}</text>`).join('');
+  const dots=d.a.map((v,i)=>`<circle cx="${x(i)}" cy="${y(v)}" r="3.5" fill="${css('--blue')}"><title>${MONTHS[i]}: ${v} actual vs ${d.f[i]} forecast</title></circle>`).join('');
+  el.innerHTML=`<svg width="100%" viewBox="0 0 ${W} ${H}" role="img" aria-label="Forecast vs actual registrations">${g}${lab}
+   <path d="${path(d.f)}" fill="none" stroke="${css('--muted')}" stroke-opacity=".55" stroke-width="2" stroke-dasharray="5 4"/>
+   <path d="${path(d.a)}" fill="none" stroke="${css('--blue')}" stroke-width="2.5"/>${dots}</svg>`;
+}
+function bars(){
+  const el=document.getElementById('barChart'),W=Math.max(el.clientWidth,260),rowH=28,H=EVENTS.length*rowH+10,lab=128,mid=lab+(W-lab-30)/2,sc=(W-lab-30)/2/7;
+  let s=`<line x1="${mid}" x2="${mid}" y1="0" y2="${H}" stroke="${css('--line')}"/>`;
+  EVENTS.forEach((e,i)=>{const yy=i*rowH+6,w=Math.abs(e.var)*sc,x0=e.var>=0?mid:mid-w,col=e.var>=0?css('--teal'):css('--red');
+    s+=`<g class="bar-btn" data-i="${i}"><rect x="0" y="${yy-2}" width="${W}" height="${rowH-4}" fill="${i===picked?css('--chip'):'transparent'}" rx="6"/>
+    <text x="6" y="${yy+15}" style="fill:${css('--ink')}">${e.n}</text>
+    <rect x="${x0}" y="${yy+3}" width="${w}" height="16" rx="3" fill="${col}"/>
+    <text x="${e.var>=0?x0+w+4:x0-4}" y="${yy+15}" text-anchor="${e.var>=0?'start':'end'}">${e.var>0?'+':''}${e.var.toFixed(1)}%</text></g>`;});
+  el.innerHTML=`<svg width="100%" viewBox="0 0 ${W} ${H}" role="img" aria-label="Revenue variance by event">${s}</svg>`;
+  el.querySelectorAll('.bar-btn').forEach(b=>b.onclick=()=>{picked=+b.dataset.i;bars();rc();});
+}
+function rc(){
+  const e=EVENTS[picked];document.getElementById('rcTitle').textContent='Root cause: '+e.n;
+  const big=[['volume',e.vol],['price',e.price],['sponsorship',e.spon]].sort((a,b)=>Math.abs(b[1])-Math.abs(a[1]))[0];
+  const sign=v=>(v>0?'+':'')+v.toFixed(1)+' pts';
+  const action={volume:e.vol<0?'Check registration pacing against last year and adjust marketing spend mid-cycle.':'Lock in the channels that drove extra registrations for the next event.',
+    price:e.price<0?'Review discount codes and early-bird mix; tighten approval on deep discounts.':'Test whether the price lift holds without hurting conversion.',
+    sponsorship:e.spon<0?'Flag at-risk sponsor renewals early and line up backfill options.':'Document what landed the extra sponsor dollars and repeat it.'}[big[0]];
+  document.getElementById('rc').innerHTML=`<div class="row"><span>Total variance to plan</span><b class="${e.var>=0?'up':'down'}">${e.var>0?'+':''}${e.var.toFixed(1)}%</b></div>
+   <div class="row"><span>Attendance volume</span><b>${sign(e.vol)}</b></div><div class="row"><span>Ticket price and mix</span><b>${sign(e.price)}</b></div>
+   <div class="row"><span>Sponsorship</span><b>${sign(e.spon)}</b></div>
+   <p style="margin:10px 0 0;color:var(--muted)"><b style="color:var(--ink)">Biggest driver: ${big[0]}.</b> ${action}</p>`;
+}
+function scen(){
+  const a=+att.value,p=+price.value,s=+spon.value;sa.textContent=(a>0?'+':'')+a+'%';sp.textContent=(p>0?'+':'')+p+'%';ss.textContent=(s>0?'+':'')+s+'%';
+  const q=BASE.rev/3,ticket=q*BASE.ticketShare*(1+a/100)*(1+p/100),sp_=q*BASE.sponShare*(1+s/100),oth=q*BASE.otherShare*(1+a/100);
+  const rev=ticket+sp_+oth,cost=(BASE.cost/3)*(.7+.3*(1+a/100)),m=(rev-cost)/rev*100,base=(q-BASE.cost/3)/q*100;
+  orev.textContent=fmtM(rev);omar.innerHTML=m.toFixed(1)+'% <span class="'+(m>=base?'up':'down')+'" style="font-size:12px">('+(m-base>=0?'+':'')+(m-base).toFixed(1)+' pts)</span>';
+}
+['att','price','spon'].forEach(id=>document.getElementById(id).addEventListener('input',scen));
+function render(){chips();kpis();line();bars();rc();scen();}
+render();addEventListener('resize',()=>{line();bars();});
+matchMedia('(prefers-color-scheme: dark)').addEventListener?.('change',()=>{line();bars();});
+
+/* ---------- values ---------- */
+const VALUES=[
+ {ic:'I',t:'Integrity',p:'Saying what the data shows, even when it is inconvenient.',
+  s:'At Expenzing I made a mistake in a client pitch.',ta:'Own it instead of letting it slide.',a:'I followed up with the client right after the meeting to correct it.',r:'A fast, honest correction kept trust intact. That is how I handle numbers too.'},
+ {ic:'O',t:'Objectivity',p:'Fact-based decisions over opinions.',
+  s:'Our team disagreed on how to price a client customization.',ta:'We needed a number we could defend, not a guess.',a:'Instead of settling it by opinion, we agreed to check the effort with IT before quoting.',r:'The quote rested on IT\u2019s input rather than guesses.'},
+ {ic:'N',t:'No-limits mindset',p:'Treating barriers as problems to solve.',
+  s:'One implementation was for a large NGO working across India, including remote villages where local vendors did not use technology.',ta:'Their invoices still had to get into the system.',a:'I worked on that onboarding challenge with the client team instead of treating those vendors as out of scope.',r:'What I took from it: design for the least-connected user. Happy to walk through it in an interview.'},
+ {ic:'C',t:'Collaboration',p:'Winning as one team across functions.',
+  s:'Clients needed invoice three-way matching to cut manual checks.',ta:'I had to turn their rules into something the platform could run.',a:'I worked with our product team to configure the matching rules in Expenzing’s platform.',r:'Across my implementations, clients saw 35% less reconciliation effort and a 14.6% faster AP approval cycle.'},
+ {ic:'R',t:'Results',p:'Owning the outcome, not just the task.',
+  s:'AP approvals were moving slowly for clients.',ta:'Find the real cause, not the symptom.',a:'I traced it to a 10-invoice batch limit moving through a 7-layer approval chain, and escalated it to IT with the evidence.',r:'IT implemented a workaround and the bottleneck cleared.'}
+];
+document.getElementById('vals').innerHTML=VALUES.map(v=>`<div class="card val"><div class="vh"><div class="ic">${v.ic}</div><h3>${v.t}</h3></div><p>${v.p}</p>
+ <details><summary>See my story</summary><div class="star"><div><b>Situation:</b> ${v.s}</div><div><b>Task:</b> ${v.ta}</div><div><b>Action:</b> ${v.a}</div><div><b>Result:</b> ${v.r}</div></div></details></div>`).join('');
+
+/* ---------- AI Aditi (scripted) ---------- */
+const KB=[
+ {k:['tour','start','guide','walk'],a:"Happy to! Here's the quick tour:\n1) 'How I map to the role' compares the posting to my experience, gap included.\n2) 'Conference Portfolio Pulse' is a demo of the forecast, variance and scenario work this team does.\n3) Then Gartner's values with a story for each, and my first 90 days.\nWhat would you like to dig into?",go:'#fit'},
+ {k:['why gartner','why this','why you','why conferences','interest'],a:"Planning & Performance sits where I'm happiest: between the raw numbers and the leaders who decide with them. At Expenzing my favorite work was explaining why a number moved. Conferences adds forecasting and scenario planning on a live portfolio, which is exactly where I want to grow."},
+ {k:['fit','qualif','strength','match','good for'],a:"Strongest matches: executive KPI reporting (CEO dashboards across 50+ accounts), Power BI and Excel daily, root-cause analysis (the AP batch-limit story), and turning business questions into requirements (BRDs, FRDs, UAT). The 'How I map to the role' table has the full list.",go:'#fit'},
+ {k:['gap','weak','experience','years','2+','junior'],a:"Honest answer: the posting asks for 2+ years, and I have 5 months as a full-time business analyst, plus five years running my own bakery and a Master's in Business Analytics. I'd rather say that upfront. What I can promise is a fast ramp: at Expenzing I was running 15+ implementations at once within months."},
+ {k:['forecast','budget','scenario','model','plan'],a:"My professional work was reporting and root cause more than formal FP&A forecasting. I ran my own bakery business for five years, and the scenario planner on this page shows how I'd build a driver-based model: attendance, price and sponsorship feeding revenue and margin. I'd expect to learn your forecasting process in my first 30 days.",go:'#dash'},
+ {k:['dashboard','demo','pulse','data'],a:"The Conference Portfolio Pulse uses invented numbers, not Gartner data. Try the region chips, click an event bar to see its root cause, and move the scenario sliders.",go:'#dash'},
+ {k:['power bi','excel','sql','python','tool','tableau','powerpoint'],a:"Daily: Power BI, Excel and PowerPoint. Also SQL (Chicago Bike Share analysis with Tableau), Python (bank risk analytics and a stock-prediction ML project), Jira, and AI tools like Claude, ChatGPT and Copilot."},
+ {k:[' ai','ai ','claude','chatgpt','copilot','genai'],a:"I use AI daily for first drafts of analysis, checking queries and writing documentation, and I always verify the numbers myself. Even this assistant is part of that, though it's scripted from facts I wrote, not a live model."},
+ {k:['visa','sponsor','authoriz','opt','work permit'],a:"I'm on STEM OPT and authorized to work in the US. I don't need sponsorship for this role."},
+ {k:['irving','relocat','hybrid','location','texas','start','available'],a:"I'm ready to relocate to Irving and work the hybrid schedule. I can start right away."},
+ {k:['expenzing','previous','last job','work history'],a:"Expenzing is a Source-to-Pay SaaS company in Mumbai. As Business Analyst and Product Executive (Feb–Jul 2025) I ran 15+ concurrent client implementations, wrote BRDs/FRDs and user stories, supported UAT in Agile/Scrum, configured invoice-matching rules with the product team, and built CEO dashboards across 50+ accounts. Results included a 14.6% faster AP approval cycle and 35% less reconciliation effort."},
+ {k:['bakery','sweet bites','business','founder','entrepreneur'],a:"I founded and ran Sweet Bites, a bakery business, for five years. It taught me to own outcomes end to end."},
+ {k:['education','degree','penn state','mban','gpa','school','master'],a:"Master of Business Analytics from Penn State Smeal (Aug 2026, GPA 3.76) with a Graduate Certificate in Management Consulting. Before that, an MBA in Business Analytics from ITM Business School and a B.Tech in Computer Science. I'm also a TA at Smeal and on the Student Leadership Board."},
+ {k:['value','integrity','objectiv','no-limits','no limits','collaborat','result'],a:"I've matched each of Gartner's values to a real story from my work, like owning a client mistake for integrity and tracing an AP bottleneck to a batch limit for results. Open any card in the values section to read the full STAR story.",go:'#values'},
+ {k:['story','example','root cause','bottleneck','problem'],a:"Favorite story: AP approvals were slow for clients. I traced it to a 10-invoice batch limit moving through a 7-layer approval chain, escalated it to IT with the evidence, and they shipped a workaround. Finding why a number moves is the part of analytics I love most."},
+ {k:['90','first days','onboard','ramp'],a:"Days 1–30: learn the KPIs and where each number comes from, and own one recurring report. Days 31–60: own variance commentary and automate one manual step. Days 61–90: build a driver-based scenario view and bring a data-backed recommendation to a business review.",go:'#plan'},
+ {k:['contact','reach','email','linkedin','resume'],a:"The fastest way is LinkedIn: linkedin.com/in/aditi-behera. My full portfolio is at aditibehera.github.io/portfolio.html. I'd love to talk!"},
+ {k:['hello','hi','hey'],a:"Hi! I'm AI Aditi. Ask me about my fit for Planning & Performance, my experience, or try 'give me the tour'."}
+];
+const SUGG=['Give me the tour','Why Gartner?','What’s your gap?','How do you forecast?','Visa status','Tell me a story'];
+const msgs=document.getElementById('msgs'),bot=document.getElementById('bot');
+function add(t,who){const d=document.createElement('div');d.className='m '+who;d.textContent=t;msgs.appendChild(d);msgs.scrollTop=msgs.scrollHeight;}
+function answer(q){
+  const s=' '+q.toLowerCase()+' ';let best=null,score=0;
+  KB.forEach(e=>{const sc=e.k.filter(k=>s.includes(k)).length;if(sc>score){score=sc;best=e;}});
+  setTimeout(()=>{ if(best){add(best.a,'b'); if(best.go){document.querySelector(best.go).scrollIntoView({behavior:'smooth'});} }
+    else add("I don't have a scripted answer for that one, but the real Aditi would love the question. Reach her on LinkedIn: linkedin.com/in/aditi-behera. Or try one of the suggestions below.",'b'); },350);
+}
+document.getElementById('sugg').innerHTML=SUGG.map(s=>`<button class="chip" type="button">${s}</button>`).join('');
+document.querySelectorAll('#sugg button').forEach(b=>b.onclick=()=>{add(b.textContent,'u');answer(b.textContent);});
+document.getElementById('f').onsubmit=e=>{e.preventDefault();const v=q.value.trim();if(!v)return;add(v,'u');q.value='';answer(v);};
+let greeted=false;
+function openBot(){bot.classList.add('on');if(!greeted){greeted=true;add("Hi, I'm AI Aditi, a scripted guide to Aditi's fit for the Planning & Performance Business Analyst role. I answer from facts she wrote herself. Want the tour?",'b');}setTimeout(()=>q.focus(),50);}
+document.getElementById('fab').onclick=()=>bot.classList.contains('on')?bot.classList.remove('on'):openBot();
+document.getElementById('openBot2').onclick=openBot;
+document.getElementById('closeBot').onclick=()=>bot.classList.remove('on');
+</script>
+</body>
+</html>
